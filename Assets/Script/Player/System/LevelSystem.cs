@@ -1,7 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class LevelSystem 
 {
     public int level;
@@ -9,21 +10,21 @@ public class LevelSystem
     public int pointStats;
     public float expNextLevel;
 
-    public LevelSystem() 
+    public void LevelBegin()
     {
         level = 1;
         exp = 0f;
         expNextLevel = 100f;
     }
-
     public void AddExp(float exp)
     {
         this.exp += exp;
-        if(this.exp >= expNextLevel)
+        while (this.exp >= expNextLevel)
         {
             this.exp -= expNextLevel;
             pointStats++;
-            
+            level++;
+            expNextLevel = (float)(500f * Math.Pow(level, 2) - (500 * level));
         }
     }
 }

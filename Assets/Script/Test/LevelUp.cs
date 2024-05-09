@@ -13,13 +13,12 @@ public class LevelUp : MonoBehaviour
     private GameObject parrent;
     private void OnEnable()
     {
-        character = new Character();
+        character = GameObject.Find("Player").GetComponent<PlayerManager>().character;
         parrent = GameObject.Find("UpLevel");
         level = parrent.transform.GetChild(0).GetComponent<TMP_Text>();
         Debug.Log(level.gameObject.name);
         expBar = parrent.transform.GetChild(1).GetComponent<Slider>();
         buttons = parrent.transform.GetChild(2).gameObject;
-        character.CreatedCharacter("Thuy", Character.ClassType.Warrior);
     }
     void Start()
     {
@@ -27,15 +26,17 @@ public class LevelUp : MonoBehaviour
         Debug.Log(a);
         buttons.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(() =>
         {
-            character.AddExp(50f);
+            character.levelSystem.AddExp(50f);
         });
         buttons.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(() =>
         {
-            character.AddExp(100f);
+            character.levelSystem.AddExp(100f);
         });
         buttons.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(() =>
         {
-            character.AddExp(500f);
+            character.levelSystem.AddExp(500f);
+            character.SavePlayer("id");
+            
         });
     }
 
@@ -43,8 +44,8 @@ public class LevelUp : MonoBehaviour
     void Update()
     {
         if(level==null||expBar==null) return;
-        level.SetText("Level: "+character.level);
-        expBar.maxValue = character.expNextLevel;
-        expBar.value = character.exp;
+        level.SetText("Level: "+character.levelSystem.level);
+        expBar.maxValue = character.levelSystem.expNextLevel;
+        expBar.value = character.levelSystem.exp;
     }
 }

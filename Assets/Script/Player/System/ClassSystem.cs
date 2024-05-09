@@ -1,32 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class ClassSystem 
 {
-    public string nameClass;
-    public StatsSystem stats;
-    public string[] classSelected = { "Warrior", "Mage", "Rogue ", "Wretch" };
+    public ClassType nameClass;
+    public StatsSystem stats = new StatsSystem();
 
-    public StatsSystem ChoiceClass(int index)
+    public void ChoiceClass(ClassType type)
     {
-        switch (index)
+        switch (type)
         {
-            case 0:
-               return Warrior();
-            case 1:
-                return Mage();
-            case 2:
-                return Rogue();
-            case 3:
-                return Wretch();
-            default: return Warrior();
+            case ClassType.Warrior:
+                Warrior();
+                break;
+            case ClassType.Mage:
+                Mage();
+                break;
+            case ClassType.Rogue:
+                Rogue();
+                break;
+            default:
+                Warrior();
+                break;
         }
+        nameClass = type;
     }
 
-    private StatsSystem Warrior()
+    private void Warrior()
     {
-        nameClass = classSelected[0];
         stats = new StatsSystem();
         stats.Vitality = 15;
         stats.Mind = 5;
@@ -34,11 +36,11 @@ public class ClassSystem
         stats.Strength = 15;
         stats.Dexterity = 5;
         stats.Intelligence = 5;
-        return stats;
+
     }
-    private StatsSystem Mage()
+    private void Mage()
     {
-        nameClass = classSelected[1];
+      
         stats = new StatsSystem();
         stats.Vitality = 10;
         stats.Mind = 15;
@@ -46,11 +48,9 @@ public class ClassSystem
         stats.Strength = 5;
         stats.Dexterity = 5;
         stats.Intelligence = 15;
-        return stats;
     }
-    private StatsSystem Rogue()
+    private void Rogue()
     {
-        nameClass = classSelected[2];
         stats = new StatsSystem();
         stats.Vitality = 10;
         stats.Mind = 5;
@@ -58,18 +58,10 @@ public class ClassSystem
         stats.Strength = 5;
         stats.Dexterity = 20;
         stats.Intelligence = 5;
-        return stats;
     }
-    private StatsSystem Wretch()
+
+    public enum ClassType
     {
-        nameClass = classSelected[3];
-        stats = new StatsSystem();
-        stats.Vitality = 10;
-        stats.Mind = 10;
-        stats.Endurance = 10;
-        stats.Strength = 10;
-        stats.Dexterity = 10;
-        stats.Intelligence = 10;
-        return stats;
+        Warrior, Mage, Rogue
     }
 }

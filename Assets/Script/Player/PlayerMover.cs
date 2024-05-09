@@ -18,17 +18,7 @@ public class PlayerMover : MonoBehaviour
         animator = GetComponent<Animator>();
         weaponParent = GetComponentInChildren<WeaponParent>();
     }
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-
-    }
+  
 
     private void FixedUpdate()
     {
@@ -49,7 +39,6 @@ public class PlayerMover : MonoBehaviour
         if (callback.performed)
         {
             moverVector = callback.ReadValue<Vector2>() ;
-            
         }
         else
         {

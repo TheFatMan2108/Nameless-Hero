@@ -12,21 +12,19 @@ public class CreadCharacter : MonoBehaviour
     private TMP_Dropdown classType;
     private Button ok;
     private Character character;
-    private void Awake()
+    private void OnEnable()
     {
-        character = new Character();
+        character = GameObject.Find("Player").GetComponent<PlayerManager>().character;
         created = GameObject.Find("Created");
         namePlayer = created.transform.GetChild(0).GetComponent<TMP_InputField>();
         classType = created.transform.GetChild(1).GetComponent<TMP_Dropdown>();
-        Debug.Log(classType);
         ok = created.transform.GetChild(2).GetComponent<Button>();
         ok.onClick.AddListener(Created);
-        string[] typeClass = Enum.GetNames(typeof(Character.ClassType));
+        string[] typeClass = Enum.GetNames(typeof(ClassSystem.ClassType));
         if (classType != null)
         {
             for (int i = 0; i < typeClass.Length; i++)
             {
-                Debug.Log(typeClass[i]);
                 classType.options.Add(new TMP_Dropdown.OptionData(typeClass[i]));
             }
         }
@@ -49,9 +47,10 @@ public class CreadCharacter : MonoBehaviour
     public void Created()
     {
 
-        character.CreatedCharacter(namePlayer.text,(Character.ClassType) Enum.GetValues(typeof(Character.ClassType)).GetValue(classType.value));
+        character.CreatedCharacter(namePlayer.text,(ClassSystem.ClassType) Enum.GetValues(typeof(ClassSystem.ClassType)).GetValue(classType.value));
         string data = JsonUtility.ToJson(character);
         Debug.Log(data);
+        character.SavePlayer("id");
         created.gameObject.SetActive(false);
 
 
