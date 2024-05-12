@@ -1533,8 +1533,8 @@ MonoBehaviour:
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
+  m_SoftZoneWidth: 0.06
+  m_SoftZoneHeight: 0.13
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
@@ -2294,7 +2294,6 @@ GameObject:
   - component: {fileID: 1026818786}
   - component: {fileID: 1026818792}
   - component: {fileID: 1026818794}
-  - component: {fileID: 1026818789}
   - component: {fileID: 1026818793}
   - component: {fileID: 1026818795}
   m_Layer: 0
@@ -2331,8 +2330,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1026818789}
-        m_TargetAssemblyTypeName: PlayerMover, Assembly-CSharp
+      - m_Target: {fileID: 1026818794}
+        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
         m_MethodName: OnMover
         m_Mode: 0
         m_Arguments:
@@ -2347,7 +2346,7 @@ MonoBehaviour:
     m_ActionName: Player/Mover[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1985875224}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WeaponAttack, Assembly-CSharp
         m_MethodName: Attacked
         m_Mode: 0
@@ -2363,8 +2362,8 @@ MonoBehaviour:
     m_ActionName: Player/Attack[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1026818789}
-        m_TargetAssemblyTypeName: PlayerMover, Assembly-CSharp
+      - m_Target: {fileID: 1026818794}
+        m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
         m_MethodName: GetMousePosition
         m_Mode: 0
         m_Arguments:
@@ -2454,19 +2453,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1026818789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1026818785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53cf34d7002b575409802c4ccda0c6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
 --- !u!212 &1026818790
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2603,6 +2589,7 @@ MonoBehaviour:
       Strength: 0
       Dexterity: 0
       Intelligence: 0
+  speed: 10
 --- !u!114 &1026818795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4789,8 +4776,8 @@ GameObject:
   - component: {fileID: 1985875221}
   - component: {fileID: 1985875222}
   - component: {fileID: 1985875223}
-  - component: {fileID: 1985875224}
   - component: {fileID: 1985875225}
+  - component: {fileID: 1985875226}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -4854,7 +4841,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 1c1b540ca8dbfa74a8bbeea5f5366f59, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -4862,7 +4849,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1985875223
@@ -4886,18 +4873,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1985875224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1985875220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59298d6e58dc037418a9f8761319f58e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!68 &1985875225
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -4945,6 +4920,18 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &1985875226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985875220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3efd8caa5b4a14549a6be301bcbd76c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2089695405
 GameObject:
   m_ObjectHideFlags: 0
