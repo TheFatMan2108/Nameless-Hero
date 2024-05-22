@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerState 
 {
     protected PlayerStateMachine stateMachine;
-    protected PlayerManager playerManager;
+    protected Player playerManager;
     protected Vector2 moveDirection;
+    protected float dashArea;
     private string animBoolName;
-
-    public PlayerState(PlayerStateMachine stateMachine, PlayerManager playerManager, string animBoolName)
+    public PlayerState(PlayerStateMachine stateMachine, Player playerManager, string animBoolName)
     {
         this.stateMachine = stateMachine;
         this.playerManager = playerManager;
@@ -26,8 +26,15 @@ public class PlayerState
     {
         PlayAnimation(playerManager.GetMouseDirection().normalized);
         moveDirection = playerManager.moverVector;
-        playerManager.rb.velocity = moveDirection.normalized*playerManager.speed;
+        CountDownFun();
     }
+
+    private void CountDownFun()
+    {
+        dashArea -= Time.deltaTime;
+    }
+
+
     public virtual void Exit()
     {
         #region Off

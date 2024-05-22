@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerIdleState : PlayerState
+public class PlayerIdleState : PlayerGroundState
 {
-    public PlayerIdleState(PlayerStateMachine stateMachine, PlayerManager playerManager, string animBoolName) : base(stateMachine, playerManager, animBoolName)
+    public PlayerIdleState(PlayerStateMachine stateMachine, Player playerManager, string animBoolName) : base(stateMachine, playerManager, animBoolName)
     {
     }
 

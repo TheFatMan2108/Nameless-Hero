@@ -14,7 +14,7 @@ public class CreadCharacter : MonoBehaviour
     private Character character;
     private void OnEnable()
     {
-        character = GameObject.Find("Player").GetComponent<PlayerManager>().character;
+        character = GameObject.Find("Player").GetComponent<Player>().character;
         created = GameObject.Find("Created");
         namePlayer = created.transform.GetChild(0).GetComponent<TMP_InputField>();
         classType = created.transform.GetChild(1).GetComponent<TMP_Dropdown>();

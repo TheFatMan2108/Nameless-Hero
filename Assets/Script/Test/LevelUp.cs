@@ -13,7 +13,7 @@ public class LevelUp : MonoBehaviour
     private GameObject parrent;
     private void OnEnable()
     {
-        character = GameObject.Find("Player").GetComponent<PlayerManager>().character;
+        character = GameObject.Find("Player").GetComponent<Player>().character;
         parrent = GameObject.Find("UpLevel");
         level = parrent.transform.GetChild(0).GetComponent<TMP_Text>();
         Debug.Log(level.gameObject.name);

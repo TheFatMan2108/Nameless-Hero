@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovementState : PlayerState
+public class PlayerMovementState : PlayerGroundState
 {
-    public PlayerMovementState(PlayerStateMachine stateMachine, PlayerManager playerManager, string animBoolName) : base(stateMachine, playerManager, animBoolName)
+    public PlayerMovementState(PlayerStateMachine stateMachine, Player playerManager, string animBoolName) : base(stateMachine, playerManager, animBoolName)
     {
     }
 
@@ -21,6 +21,8 @@ public class PlayerMovementState : PlayerState
     public override void Update()
     {
         base.Update();
+        if(!playerManager.isKnockBack)
+        playerManager.rb.velocity = moveDirection.normalized * playerManager.moveSpeed;
         if (moveDirection.sqrMagnitude == 0) stateMachine.ChangeState(playerManager.idleState);
     }
 }

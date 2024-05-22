@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerManager : MonoBehaviour
+public class Player : Entity
 {
     #region Data Mananger
     public Character character;
@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviour
     #endregion
     #region Animation
     public Animator animator { get; private set; }
+    public GhostEffectSystem effectSystem { get; private set; }
     #endregion
     #region Collision
     public Rigidbody2D rb { get; private set; }
@@ -22,35 +23,46 @@ public class PlayerManager : MonoBehaviour
     public PlayerStateMachine playerStateMachine { get; private set; }
     public PlayerIdleState idleState { get; private set; }
     public PlayerMovementState movementState { get; private set; }
+    public PlayerDashState dashState { get; private set; }
     #endregion
     #region Stats
-    public float speed;
+    public float cooldownDash;
+    public bool isAttackBusy { get; private set; }
     #endregion
     #region Weapons
     private WeaponParent weaponParent;
     #endregion
-    private void Awake()
+    
+    
+    protected override void Awake()
     {
+        base.Awake();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         weaponParent = GetComponentInChildren<WeaponParent>();
+        effectSystem = transform.GetChild(1).GetComponentInChildren<GhostEffectSystem>();
         #region Call States
         playerStateMachine = new PlayerStateMachine();
         idleState = new PlayerIdleState(playerStateMachine, this, "Idle");
         movementState = new PlayerMovementState(playerStateMachine, this, "Move");
+        dashState = new PlayerDashState(playerStateMachine, this, "Dash");
         #endregion
     }
-    void Start()
+
+    protected override void Start()
     {
+        base.Start();
         playerStateMachine.Initialize(idleState);
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         playerStateMachine.State.Update();
         weaponParent.pointerposition = mousePosition;
+        cooldownDash -= Time.deltaTime;
     }
+
     public void OnMover(InputAction.CallbackContext callback)
     {
         if (callback.performed)
@@ -73,4 +85,20 @@ public class PlayerManager : MonoBehaviour
     {
         return (mousePosition - new Vector2(transform.position.x, transform.position.y));
     }
+ 
+
+    public void OnGhost()
+    {
+        effectSystem.SetOnGhostAnimation(true,GetComponent<SpriteRenderer>());
+    }
+    public void OffGhost()
+    {
+        effectSystem.SetOnGhostAnimation(false);
+    }
+
+    public void SetCooldown(float cooldown)
+    {
+        this.cooldownDash = cooldown;
+    }
+
 }
