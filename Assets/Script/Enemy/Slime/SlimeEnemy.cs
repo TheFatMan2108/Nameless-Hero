@@ -11,6 +11,7 @@ public class SlimeEnemy : Enemy
     public SlimeIdleState idleState { get; private set; }
     public SlimeMoveState moveState { get; private set; }
     public SlimeAttackState attackState { get; private set; }
+    public SlimeDeadState deadState { get; private set; }
     #endregion
     #region Transform
     public Transform originPosition;
@@ -21,6 +22,7 @@ public class SlimeEnemy : Enemy
         idleState = new SlimeIdleState(this, enemyStateMachine, "Idle", this);
         moveState = new SlimeMoveState(this, enemyStateMachine, "Move", this);
         attackState = new SlimeAttackState(this, enemyStateMachine, "Attack", this);
+        deadState = new SlimeDeadState(this, enemyStateMachine, "Dead", this);
         
     }
     protected override void Start()
@@ -69,5 +71,11 @@ public class SlimeEnemy : Enemy
     public override void Flip(float dir)
     {
         base.Flip(dir);
+    }
+
+    public override void Dead()
+    {
+        base.Dead();
+        enemyStateMachine.ChangeState(deadState);
     }
 }

@@ -22,6 +22,7 @@ public class Entity : MonoBehaviour
     #endregion
     #region Script
     protected FXEntity fXEntity;
+    public EntityStats entityStats;
     #endregion
     protected EnemyStateMachine enemyStateMachine { get; private set; }
     protected virtual void Awake()
@@ -30,6 +31,7 @@ public class Entity : MonoBehaviour
         fXEntity = GetComponent<FXEntity>();
         rb = GetComponent<Rigidbody2D>();
         enemyStateMachine = new EnemyStateMachine();
+        entityStats = GetComponent<EntityStats>();
     }
     protected virtual void Start()
     {
@@ -81,5 +83,9 @@ public class Entity : MonoBehaviour
         yield return new WaitForSeconds(knockBackTimer);
         isKnockBack = false;
         SetVelocity(0,0);
+    }
+    public virtual void Dead()
+    {
+
     }
 }

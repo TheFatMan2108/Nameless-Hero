@@ -5,9 +5,6 @@ using UnityEngine.InputSystem;
 
 public class Player : Entity
 {
-    #region Data Mananger
-    public Character character;
-    #endregion
     #region Input
     public Vector2 moverVector { get; private set; }
     public Vector2 mousePosition { get; private set; }
@@ -24,6 +21,7 @@ public class Player : Entity
     public PlayerIdleState idleState { get; private set; }
     public PlayerMovementState movementState { get; private set; }
     public PlayerDashState dashState { get; private set; }
+    public PlayerDeadState deadState { get; private set; }
     #endregion
     #region Stats
     public float cooldownDash;
@@ -46,6 +44,7 @@ public class Player : Entity
         idleState = new PlayerIdleState(playerStateMachine, this, "Idle");
         movementState = new PlayerMovementState(playerStateMachine, this, "Move");
         dashState = new PlayerDashState(playerStateMachine, this, "Dash");
+        deadState = new PlayerDeadState(playerStateMachine, this, "Dead");
         #endregion
     }
 
@@ -99,6 +98,12 @@ public class Player : Entity
     public void SetCooldown(float cooldown)
     {
         this.cooldownDash = cooldown;
+    }
+
+    public override void Dead()
+    {
+        base.Dead();
+        playerStateMachine.ChangeState(deadState);
     }
 
 }

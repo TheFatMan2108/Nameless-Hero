@@ -9,6 +9,7 @@ public class EnemyState
     private string animBoolName;
     protected float timmerState;
     protected bool triggerCalled;
+    protected bool isDead;
 
     public EnemyState(Enemy enemyBase, EnemyStateMachine stateMachine, string animBoolName)
     {
@@ -23,6 +24,7 @@ public class EnemyState
     }
     public virtual void Update()
     {
+        if(isDead) return;
         timmerState -= Time.deltaTime;
     }
     public virtual void Exit()

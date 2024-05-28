@@ -2089,7 +2089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &917632295
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2328,6 +2328,7 @@ GameObject:
   - component: {fileID: 1026818793}
   - component: {fileID: 1026818795}
   - component: {fileID: 1026818796}
+  - component: {fileID: 1026818797}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -2608,29 +2609,7 @@ MonoBehaviour:
   rb: {fileID: 1026818787}
   attackCheck: {fileID: 1235807910}
   isKnockBack: 0
-  character:
-    namePlayer: 
-    systemClass:
-      nameClass: 0
-      stats:
-        Vitality: 0
-        Mind: 0
-        Endurance: 0
-        Strength: 0
-        Dexterity: 0
-        Intelligence: 0
-    levelSystem:
-      level: 0
-      exp: 0
-      pointStats: 0
-      expNextLevel: 0
-    stats:
-      Vitality: 0
-      Mind: 0
-      Endurance: 0
-      Strength: 0
-      Dexterity: 0
-      Intelligence: 0
+  entityStats: {fileID: 0}
   cooldownDash: 3
 --- !u!114 &1026818795
 MonoBehaviour:
@@ -2658,6 +2637,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fxHit: {fileID: 2100000, guid: 6875fe730d6b06548bf029bfc36d113e, type: 2}
+--- !u!114 &1026818797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026818785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aee5db95c07dfe04cbc348652d1221b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Vitality:
+    baseValue: 0
+    modifiers: []
+  Mind:
+    baseValue: 0
+    modifiers: []
+  Endurance:
+    baseValue: 0
+    modifiers: []
+  Strength:
+    baseValue: 0
+    modifiers: []
+  Dexterity:
+    baseValue: 0
+    modifiers: []
+  Intelligence:
+    baseValue: 0
+    modifiers: []
+  damage:
+    baseValue: 10
+    modifiers: []
+  critChance:
+    baseValue: 0
+    modifiers: []
+  critPower:
+    baseValue: 0
+    modifiers: []
+  maxHealth:
+    baseValue: 10
+    modifiers: []
+  armor:
+    baseValue: 10
+    modifiers: []
 --- !u!1 &1028631936
 GameObject:
   m_ObjectHideFlags: 0
@@ -3425,6 +3449,7 @@ GameObject:
   - component: {fileID: 1324920726}
   - component: {fileID: 1324920724}
   - component: {fileID: 1324920727}
+  - component: {fileID: 1324920728}
   m_Layer: 7
   m_Name: Slime
   m_TagString: Untagged
@@ -3470,6 +3495,7 @@ MonoBehaviour:
   rb: {fileID: 1324920725}
   attackCheck: {fileID: 2074909589}
   isKnockBack: 0
+  entityStats: {fileID: 0}
   distanceBetween: 4.43
   originPosition: {fileID: 1326979592}
 --- !u!50 &1324920725
@@ -3533,7 +3559,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.09774244}
   serializedVersion: 2
-  m_Radius: 0.32576358
+  m_Radius: 0.3257636
 --- !u!114 &1324920727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3547,6 +3573,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fxHit: {fileID: 2100000, guid: 6875fe730d6b06548bf029bfc36d113e, type: 2}
+--- !u!114 &1324920728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324920722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0885fd5f7b3b2842a0345ede008bac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Vitality:
+    baseValue: 0
+    modifiers: []
+  Mind:
+    baseValue: 0
+    modifiers: []
+  Endurance:
+    baseValue: 0
+    modifiers: []
+  Strength:
+    baseValue: 0
+    modifiers: []
+  Dexterity:
+    baseValue: 0
+    modifiers: []
+  Intelligence:
+    baseValue: 0
+    modifiers: []
+  damage:
+    baseValue: 5
+    modifiers: []
+  critChance:
+    baseValue: 0
+    modifiers: []
+  critPower:
+    baseValue: 0
+    modifiers: []
+  maxHealth:
+    baseValue: 100
+    modifiers: []
+  armor:
+    baseValue: 0
+    modifiers: []
 --- !u!1 &1326979591
 GameObject:
   m_ObjectHideFlags: 0
@@ -3843,7 +3914,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1435034440
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4990,7 +5061,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1912994254}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33df8af291c1c6444901f0e36150438a, type: 3}
   m_Name: 
@@ -5017,7 +5088,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1912994254}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3368314bde567004e971ed3f430a2852, type: 3}
   m_Name: 

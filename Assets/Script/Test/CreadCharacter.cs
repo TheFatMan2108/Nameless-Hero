@@ -14,7 +14,6 @@ public class CreadCharacter : MonoBehaviour
     private Character character;
     private void OnEnable()
     {
-        character = GameObject.Find("Player").GetComponent<Player>().character;
         created = GameObject.Find("Created");
         namePlayer = created.transform.GetChild(0).GetComponent<TMP_InputField>();
         classType = created.transform.GetChild(1).GetComponent<TMP_Dropdown>();
@@ -50,7 +49,7 @@ public class CreadCharacter : MonoBehaviour
         character.CreatedCharacter(namePlayer.text,(ClassSystem.ClassType) Enum.GetValues(typeof(ClassSystem.ClassType)).GetValue(classType.value));
         string data = JsonUtility.ToJson(character);
         Debug.Log(data);
-        character.SavePlayer("id");
+        character.SavePlayer("nid");
         created.gameObject.SetActive(false);
 
 

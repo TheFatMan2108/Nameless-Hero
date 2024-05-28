@@ -9,6 +9,7 @@ public class PlayerState
     protected Vector2 moveDirection;
     protected float dashArea;
     private string animBoolName;
+    protected bool isDead;
     public PlayerState(PlayerStateMachine stateMachine, Player playerManager, string animBoolName)
     {
         this.stateMachine = stateMachine;
@@ -24,6 +25,7 @@ public class PlayerState
     }
     public virtual void Update()
     {
+        if(isDead) return;
         PlayAnimation(playerManager.GetMouseDirection().normalized);
         moveDirection = playerManager.moverVector;
         CountDownFun();

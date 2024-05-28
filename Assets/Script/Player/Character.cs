@@ -16,7 +16,7 @@ public class Character
     public void CreatedCharacter(string name, ClassSystem.ClassType classType)
     {
         namePlayer = name;
-        systemClass.ChoiceClass(classType) ;
+        systemClass.ChoiceClass(classType);
         levelSystem.LevelBegin();
         stats = systemClass.stats;
     }

@@ -30,34 +30,33 @@ public class ClassSystem
     private void Warrior()
     {
         stats = new StatsSystem();
-        stats.Vitality = 15;
-        stats.Mind = 5;
-        stats.Endurance = 15;
-        stats.Strength = 15;
-        stats.Dexterity = 5;
-        stats.Intelligence = 5;
+        stats.Vitality.SetDefaulValue( 15);
+        stats.Mind.SetDefaulValue(5);
+        stats.Endurance.SetDefaulValue(15);
+        stats.Strength.SetDefaulValue(15);
+        stats.Dexterity.SetDefaulValue(5);
+        stats.Intelligence.SetDefaulValue(5);
 
     }
     private void Mage()
     {
-      
         stats = new StatsSystem();
-        stats.Vitality = 10;
-        stats.Mind = 15;
-        stats.Endurance = 10;
-        stats.Strength = 5;
-        stats.Dexterity = 5;
-        stats.Intelligence = 15;
+        stats.Vitality.SetDefaulValue(10);
+        stats.Mind.SetDefaulValue(15);
+        stats.Endurance.SetDefaulValue(10);
+        stats.Strength.SetDefaulValue(5);
+        stats.Dexterity.SetDefaulValue(5);
+        stats.Intelligence.SetDefaulValue(15);
     }
     private void Rogue()
     {
         stats = new StatsSystem();
-        stats.Vitality = 10;
-        stats.Mind = 5;
-        stats.Endurance = 15;
-        stats.Strength = 5;
-        stats.Dexterity = 20;
-        stats.Intelligence = 5;
+        stats.Vitality.SetDefaulValue(10);
+        stats.Mind.SetDefaulValue(5);
+        stats.Endurance.SetDefaulValue(15);
+        stats.Strength.SetDefaulValue(5);
+        stats.Dexterity.SetDefaulValue(20);
+        stats.Intelligence.SetDefaulValue(5);
     }
 
     public enum ClassType
