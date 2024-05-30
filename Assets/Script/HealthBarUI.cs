@@ -31,7 +31,8 @@ public class HealthBarUI : MonoBehaviour
     }
     public void UpdateHealth()
     {
-        OnHealthBar();
+        if(healthBar.value>0) OnHealthBar();
+
         currentTimer = timeHideBar;
         healthBar.maxValue = myStats.GetMaxHealth();
         healthBar.value = myStats.curentHeatlth;
@@ -39,7 +40,9 @@ public class HealthBarUI : MonoBehaviour
     private void OnHealthBar() => healthBar.gameObject.SetActive(true);
     private void OffHealthBar()
     {
+        currentTimer = 0;
         healthBar.gameObject.SetActive(false);
+        Debug.Log("D chet");
 
     }
     private void Fliped(float xInput)
