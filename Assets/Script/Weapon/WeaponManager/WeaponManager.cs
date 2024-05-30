@@ -52,7 +52,8 @@ public class WeaponManager : MonoBehaviour
             {
                 Enemy enemy = hit.GetComponent<Enemy>();
                 enemy.TakeDamage(playerManager.transform.position);
-                playerManager.entityStats.DoDamage(enemy.entityStats);
+                enemy.entityStats.SetEnemy(playerManager);
+                playerManager.entityStats.DoDamage(enemy);
             }
         }
     }

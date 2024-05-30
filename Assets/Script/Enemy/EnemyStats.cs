@@ -17,6 +17,7 @@ public class EnemyStats : EntityStats
     protected override void Dead()
     {
         base.Dead();
+        isMe.Dead();
     }
 
 }

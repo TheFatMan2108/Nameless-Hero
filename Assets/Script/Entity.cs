@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,8 +24,11 @@ public class Entity : MonoBehaviour
     #region Script
     protected FXEntity fXEntity;
     public EntityStats entityStats;
+    public Action<float> OnFliped;
+    public Action changeHealth, hideBar;
     #endregion
     protected EnemyStateMachine enemyStateMachine { get; private set; }
+
     protected virtual void Awake()
     {
         animator = GetComponentInChildren<Animator>();
@@ -44,6 +48,7 @@ public class Entity : MonoBehaviour
     public virtual void Flip(float dir)
     {
         transform.localScale = new Vector3 (dir, 1, 1);
+        OnFliped(dir);
     }
     protected virtual void Reset()
     {
@@ -74,6 +79,7 @@ public class Entity : MonoBehaviour
     {
         StartCoroutine(KnockBack(direction));
         fXEntity.StartCoroutine("HitFX");
+        UpdateHealth();
     }
     public virtual IEnumerator KnockBack(Vector2 enemyDirection)
     {
@@ -86,6 +92,7 @@ public class Entity : MonoBehaviour
     }
     public virtual void Dead()
     {
-
+        hideBar();
     }
+    public void UpdateHealth() => changeHealth();
 }

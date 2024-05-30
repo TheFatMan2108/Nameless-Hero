@@ -6,26 +6,26 @@ using UnityEngine;
 public class EntityStats : MonoBehaviour
 {
     [Header("Stats")]
-    public Stats Vitality;
-    public Stats Mind;
-    public Stats Endurance;
-    public Stats Strength;
-    public Stats Dexterity;
-    public Stats Intelligence;
+    public Stats Vitality;// tang mau 
+    public Stats Mind;// tang mana
+    public Stats Endurance;//tang the luc
+    public Stats Strength;// tang suc manh
+    public Stats Dexterity;// tang toc do 
+    public Stats Intelligence;// tang sat thuong phep thuat
     [Header("Offensive")]
-    public Stats damage;
-    public Stats critChance;
-    public Stats critPower;
+    public Stats damage; // dame theo vu khi mang theo
+    public Stats critChance;// ti le chi mang
+    public Stats critPower;// do chi mang
     [Header("Defaul Stats")]
-    public Stats maxHealth;
-    public Stats armor;
-    public Stats magicResistance;
+    public Stats maxHealth;// mau toi da
+    public Stats armor; // chi so giap - giam sat thuong theo chi so giap hien co
+    public Stats magicResistance;// chi so sat thuong phep
     [Header("Macgic stats")]
-    public Stats fireDamage;
-    public Stats iceDamage;
-    public Stats lightDamage;
-    public Stats bloodDamage;
-    public Stats toxicDamage;
+    public Stats fireDamage;// gay chay theo thoi gian khong bo qua chi so phong thu
+    public Stats iceDamage;// gay slow ke dich bi dinh hieu ung
+    public Stats lightDamage;// gay sat thuong rat lon doi voi quai vat va quai vat khong the co loai hieu ung nay ( sat thuong he thanh )
+    public Stats bloodDamage;//gay chay mau theo thoi gian bo qua het chi so phong thu
+    public Stats toxicDamage;//gay nhiem doc theo thoi gian bo qua het chi so phong thu
     protected int currentHealth;
 
     public bool isIgnited;
@@ -33,7 +33,8 @@ public class EntityStats : MonoBehaviour
     public bool isLight;
     public bool isBloodThorns;
     public bool isToxic;
-
+    private Entity entity = null;
+    protected Entity isMe;
     #region Timer
     private float fireTimer;
     private float fireDamageCoolDown = 0.3f;
@@ -55,13 +56,14 @@ public class EntityStats : MonoBehaviour
     private float toxicDamageCooldown = 0.3f;
     private float toxicDamageTimer;
     #endregion
-    protected float curentHeatlth;
+    public float curentHeatlth;
 
 
     protected virtual void Start()
     {
+        isMe = GetComponentInParent<Entity>();
         critPower.SetDefaulValue(150);
-        curentHeatlth = maxHealth.GetValue();
+        curentHeatlth = GetMaxHealth();
     }
     protected virtual void Update()
     {
@@ -85,6 +87,7 @@ public class EntityStats : MonoBehaviour
         if (toxicTimer < 0) isToxic = false;
         #endregion
         #region effect status
+        if(entity == null)return;
         if (fireDamageTimer < 0 && isIgnited)
         {
             Debug.Log("Dang hcay");
@@ -102,8 +105,10 @@ public class EntityStats : MonoBehaviour
         }
         if (bloodDamageTimer < 0 && isBloodThorns)
         {
-            Debug.Log("Dang chay mau");
+            Debug.Log("Dang chay mau + ");
+            TakeDamage(entity.entityStats.bloodDamage.GetValue());
             bloodDamageTimer = bloodDamageCooldown;
+            isMe.changeHealth();
         }
         if (toxicDamageTimer < 0 && isToxic)
         {
@@ -112,8 +117,10 @@ public class EntityStats : MonoBehaviour
         }
         #endregion
     }
-    public virtual void DoDamage(EntityStats entityStats)
+    public virtual void DoDamage(Entity entity)
     {
+        if (this.entity == null) this.entity = entity;
+        Debug.Log("Dang chay mau + "+this.entity);
         float totalDamage = damage.GetValue() + Strength.GetValue();
         if (CanCrit())
         {
@@ -121,17 +128,17 @@ public class EntityStats : MonoBehaviour
             totalDamage = CalculateCritDamage(totalDamage);
             Debug.Log("1 " + totalDamage);
         }
-        totalDamage = CheckAmor(entityStats, totalDamage);
+        totalDamage = CheckAmor(entity, totalDamage);
         //characterStats.TakeDamage(totalDamage);
-        DoMagicDamage(entityStats);
+        DoMagicDamage(entity);
     }
 
-    private float CheckAmor(EntityStats entityStats, float totalDamage)
+    private float CheckAmor(Entity entity, float totalDamage)
     {
-        totalDamage -= entityStats.armor.GetValue();
+        totalDamage -=entity.entityStats.armor.GetValue();
         return Mathf.Clamp(totalDamage, 0, float.MaxValue);
     }
-    public virtual void DoMagicDamage(EntityStats entityStats)
+    public virtual void DoMagicDamage(Entity entityStats)
     {
         float fireDamage = this.fireDamage.GetValue();
         float iceDamage = this.iceDamage.GetValue();
@@ -141,10 +148,10 @@ public class EntityStats : MonoBehaviour
 
         float totalMagicDamage = fireDamage + iceDamage + lightDamage + Intelligence.GetValue();
 
-        totalMagicDamage -= entityStats.magicResistance.GetValue();
+        totalMagicDamage -= entity.entityStats.magicResistance.GetValue();
         totalMagicDamage = Mathf.Clamp(totalMagicDamage, 0, int.MaxValue);
 
-        entityStats.TakeDamage(totalMagicDamage);
+        entity.entityStats.TakeDamage(totalMagicDamage);
 
         if (Mathf.Max(fireDamage, iceDamage, lightDamage, bloodDamage, toxicDamage) <= 0) return;
 
@@ -159,40 +166,40 @@ public class EntityStats : MonoBehaviour
             if (Random.value < 0.3f && fireDamage > 0)
             {
                 canUseFire = true;
-                entityStats.ApplyAilement(canUseFire, canUseIce, canUseLight, canUseBlood, canUseToxic);
+               entity.entityStats.ApplyAilement(canUseFire, canUseIce, canUseLight, canUseBlood, canUseToxic);
                 Debug.Log("Chaìy");
                 return;
             }
             if (Random.value < 0.3f && iceDamage > 0)
             {
                 canUseIce = true;
-                entityStats.ApplyAilement(canUseFire, canUseIce, canUseLight, canUseBlood, canUseToxic);
+                entity.entityStats.ApplyAilement(canUseFire, canUseIce, canUseLight, canUseBlood, canUseToxic);
                 Debug.Log("Laònh");
                 return;
             }
             if (Random.value < 0.3f && lightDamage > 0)
             {
                 canUseLight = true;
-                entityStats.ApplyAilement(canUseFire, canUseIce, canUseLight, canUseBlood, canUseToxic);
+                entity.entityStats.ApplyAilement(canUseFire, canUseIce, canUseLight, canUseBlood, canUseToxic);
                 Debug.Log("Tee");
                 return;
             }
             if (Random.value < 0.3f && bloodDamage > 0)
             {
                 canUseBlood = true;
-                entityStats.ApplyAilement(canUseFire, canUseIce, canUseLight, canUseBlood, canUseToxic);
+                entity.entityStats.ApplyAilement(canUseFire, canUseIce, canUseLight, canUseBlood, canUseToxic);
                 Debug.Log("chay mau");
                 return;
             }
             if (Random.value < 0.3f && toxicDamage > 0)
             {
                 canUseToxic = true;
-                entityStats.ApplyAilement(canUseFire, canUseIce, canUseLight, canUseBlood,canUseToxic);
+                entity.entityStats.ApplyAilement(canUseFire, canUseIce, canUseLight, canUseBlood,canUseToxic);
                 Debug.Log("truìng ðôòc");
                 return;
             }
         }
-        entityStats.ApplyAilement(canUseFire, canUseIce, canUseLight, canUseBlood, canUseToxic);
+        entity.entityStats.ApplyAilement(canUseFire, canUseIce, canUseLight, canUseBlood, canUseToxic);
 
 
 
@@ -220,12 +227,12 @@ public class EntityStats : MonoBehaviour
         if (isBloodThorns)
         {
             this.isBloodThorns = isBloodThorns;
-            bloodTimer = 4f;
+            bloodTimer = 10f;
         }
         if (isToxic)
         {
             this.isToxic = isToxic;
-            toxicTimer = 4f;
+            toxicTimer = 10f;
         }
     }
     private bool CheckUseEffect(float ellementMain, float[] ellements)
@@ -258,5 +265,11 @@ public class EntityStats : MonoBehaviour
         float totalCritDamage = (critPower.GetValue() + Strength.GetValue()) * 0.1f;
         float critDamage = damage * totalCritDamage;
         return Mathf.RoundToInt(critDamage);
+    }
+
+    public float GetMaxHealth() => maxHealth.GetValue() + Vitality.GetValue() * 5;
+    public void SetEnemy(Entity enemy)
+    {
+        entity = enemy;
     }
 }

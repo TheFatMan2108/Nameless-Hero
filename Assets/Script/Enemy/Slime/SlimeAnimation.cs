@@ -19,7 +19,8 @@ public class SlimeAnimation : MonoBehaviour
             {
                 Player player = hit.GetComponent<Player>();
                 player.TakeDamage(slimeEnemy.transform.position);
-                slimeEnemy.entityStats.DoDamage(player.entityStats);
+                player.entityStats.SetEnemy(slimeEnemy);
+                slimeEnemy.entityStats.DoDamage(player);
             }
         }
     }
