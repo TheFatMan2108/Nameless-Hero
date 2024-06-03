@@ -34,6 +34,7 @@ public class EntityStats : MonoBehaviour
     public bool isBloodThorns;
     public bool isToxic;
     private Entity entity = null;
+    private FXEntity fxEntity;
     protected Entity isMe;
     #region Timer
     private float fireTimer;
@@ -64,6 +65,15 @@ public class EntityStats : MonoBehaviour
         isMe = GetComponentInParent<Entity>();
         critPower.SetDefaulValue(150);
         curentHeatlth = GetMaxHealth();
+        fxEntity = GetComponent<FXEntity>();
+    }
+
+    private void Reset()
+    {
+        isMe = GetComponentInParent<Entity>();
+        critPower.SetDefaulValue(150);
+        curentHeatlth = GetMaxHealth();
+        fxEntity = GetComponent<FXEntity>();
     }
     protected virtual void Update()
     {
@@ -212,27 +222,31 @@ public class EntityStats : MonoBehaviour
         {
             this.isIgnited = isIgnited;
             fireTimer = 4f;
-
+            fxEntity.FireFXFor(fireTimer);
         }
         if (isChilled)
         {
             this.isChilled = isChilled;
             iceTimer = 4f;
+            fxEntity.IceFXFor(iceTimer);
         }
         if (isLight)
         {
             this.isLight = isLight;
             lightTimer = 4f;
+            fxEntity.LightFXFor(lightTimer);
         }
         if (isBloodThorns)
         {
             this.isBloodThorns = isBloodThorns;
             bloodTimer = 10f;
+            fxEntity.BleedtFXFor(bloodTimer);
         }
         if (isToxic)
         {
             this.isToxic = isToxic;
             toxicTimer = 10f;
+            fxEntity.ToxictFXFor(toxicTimer);
         }
     }
     private bool CheckUseEffect(float ellementMain, float[] ellements)

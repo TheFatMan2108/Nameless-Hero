@@ -38,7 +38,7 @@ public class Player : Entity
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         weaponParent = GetComponentInChildren<WeaponParent>();
-        effectSystem = transform.GetChild(1).GetComponentInChildren<GhostEffectSystem>();
+        effectSystem = transform.GetChild(2).GetComponentInChildren<GhostEffectSystem>();
         #region Call States
         playerStateMachine = new PlayerStateMachine();
         idleState = new PlayerIdleState(playerStateMachine, this, "Idle");
