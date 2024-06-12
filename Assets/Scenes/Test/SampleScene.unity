@@ -12296,12 +12296,28 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: 126ed1bc4fb92e642b9e96050bb5311a, type: 3}
-    - sprite: {fileID: 21300000, guid: 0ca151d28cf8a144a91c51e855205cee, type: 3}
-    - sprite: {fileID: 21300000, guid: e05b22a2c1092fd48a8872f1ae8aa82e, type: 3}
-    - sprite: {fileID: 21300000, guid: 54a59320f01cd724f98314f390c0cef3, type: 3}
-    - sprite: {fileID: 21300000, guid: 8153c9b0babc8c942b497307994a14e0, type: 3}
-    - sprite: {fileID: 21300000, guid: 508e0c6f5f96db04aacbe326ed775d90, type: 3}
+    - sprite: {fileID: 840158144, guid: 13f65f698176cbb4ca88bd5778a07d55, type: 3}
+    - sprite: {fileID: -364542374, guid: 13f65f698176cbb4ca88bd5778a07d55, type: 3}
+    - sprite: {fileID: 88824005, guid: 13f65f698176cbb4ca88bd5778a07d55, type: 3}
+    - sprite: {fileID: 1593795291, guid: 13f65f698176cbb4ca88bd5778a07d55, type: 3}
+    - sprite: {fileID: -275432948, guid: 13f65f698176cbb4ca88bd5778a07d55, type: 3}
+    - sprite: {fileID: 1428857523, guid: 13f65f698176cbb4ca88bd5778a07d55, type: 3}
+    - sprite: {fileID: 1674358068, guid: 13f65f698176cbb4ca88bd5778a07d55, type: 3}
+    - sprite: {fileID: 1344956386, guid: 13f65f698176cbb4ca88bd5778a07d55, type: 3}
+    - sprite: {fileID: 989208902, guid: 13f65f698176cbb4ca88bd5778a07d55, type: 3}
+    - sprite: {fileID: -1510467640, guid: 13f65f698176cbb4ca88bd5778a07d55, type: 3}
+    - sprite: {fileID: 491028236, guid: 13f65f698176cbb4ca88bd5778a07d55, type: 3}
+    - sprite: {fileID: -1330002088, guid: 13f65f698176cbb4ca88bd5778a07d55, type: 3}
+    - sprite: {fileID: -1207849735, guid: 13f65f698176cbb4ca88bd5778a07d55, type: 3}
+    - sprite: {fileID: 773355645, guid: 13f65f698176cbb4ca88bd5778a07d55, type: 3}
+    - sprite: {fileID: 474621668, guid: 13f65f698176cbb4ca88bd5778a07d55, type: 3}
+    - sprite: {fileID: -354480625, guid: 13f65f698176cbb4ca88bd5778a07d55, type: 3}
+    - sprite: {fileID: 2140450612, guid: 13f65f698176cbb4ca88bd5778a07d55, type: 3}
+    - sprite: {fileID: 1263049608, guid: 13f65f698176cbb4ca88bd5778a07d55, type: 3}
+    - sprite: {fileID: 1728933658, guid: 13f65f698176cbb4ca88bd5778a07d55, type: 3}
+    - sprite: {fileID: -698051188, guid: 13f65f698176cbb4ca88bd5778a07d55, type: 3}
+    - sprite: {fileID: 267032816, guid: 13f65f698176cbb4ca88bd5778a07d55, type: 3}
+    - sprite: {fileID: -2106075556, guid: 13f65f698176cbb4ca88bd5778a07d55, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -17795,16 +17811,16 @@ MonoBehaviour:
     baseValue: 0
     modifiers: []
   fireDamage:
-    baseValue: 10
+    baseValue: 0
     modifiers: []
   iceDamage:
-    baseValue: 10
+    baseValue: 0
     modifiers: []
   lightDamage:
-    baseValue: 10
+    baseValue: 0
     modifiers: []
   bloodDamage:
-    baseValue: 0
+    baseValue: 10
     modifiers: []
   toxicDamage:
     baseValue: 0
@@ -33489,19 +33505,19 @@ MonoBehaviour:
     baseValue: 0
     modifiers: []
   fireDamage:
-    baseValue: 10
+    baseValue: 0
     modifiers: []
   iceDamage:
-    baseValue: 10
+    baseValue: 0
     modifiers: []
   lightDamage:
-    baseValue: 10
+    baseValue: 0
     modifiers: []
   bloodDamage:
-    baseValue: 0
+    baseValue: 10
     modifiers: []
   toxicDamage:
-    baseValue: 0
+    baseValue: 10
     modifiers: []
   isIgnited: 0
   isChilled: 0
@@ -36038,12 +36054,28 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: 126ed1bc4fb92e642b9e96050bb5311a, type: 3}
-    - sprite: {fileID: 21300000, guid: 0ca151d28cf8a144a91c51e855205cee, type: 3}
-    - sprite: {fileID: 21300000, guid: e05b22a2c1092fd48a8872f1ae8aa82e, type: 3}
-    - sprite: {fileID: 21300000, guid: 54a59320f01cd724f98314f390c0cef3, type: 3}
-    - sprite: {fileID: 21300000, guid: 8153c9b0babc8c942b497307994a14e0, type: 3}
-    - sprite: {fileID: 21300000, guid: 508e0c6f5f96db04aacbe326ed775d90, type: 3}
+    - sprite: {fileID: -1586445073, guid: 8b6a3f1cded8c784b9fedf0641cf5916, type: 3}
+    - sprite: {fileID: -1281457231, guid: 8b6a3f1cded8c784b9fedf0641cf5916, type: 3}
+    - sprite: {fileID: -468746314, guid: 8b6a3f1cded8c784b9fedf0641cf5916, type: 3}
+    - sprite: {fileID: -1264866147, guid: 8b6a3f1cded8c784b9fedf0641cf5916, type: 3}
+    - sprite: {fileID: 198705387, guid: 8b6a3f1cded8c784b9fedf0641cf5916, type: 3}
+    - sprite: {fileID: -1176572319, guid: 8b6a3f1cded8c784b9fedf0641cf5916, type: 3}
+    - sprite: {fileID: -1827168570, guid: 8b6a3f1cded8c784b9fedf0641cf5916, type: 3}
+    - sprite: {fileID: 1533835005, guid: 8b6a3f1cded8c784b9fedf0641cf5916, type: 3}
+    - sprite: {fileID: 185924105, guid: 8b6a3f1cded8c784b9fedf0641cf5916, type: 3}
+    - sprite: {fileID: 1251181647, guid: 8b6a3f1cded8c784b9fedf0641cf5916, type: 3}
+    - sprite: {fileID: -2086333555, guid: 8b6a3f1cded8c784b9fedf0641cf5916, type: 3}
+    - sprite: {fileID: -403281153, guid: 8b6a3f1cded8c784b9fedf0641cf5916, type: 3}
+    - sprite: {fileID: 1905284440, guid: 8b6a3f1cded8c784b9fedf0641cf5916, type: 3}
+    - sprite: {fileID: 1996233032, guid: 8b6a3f1cded8c784b9fedf0641cf5916, type: 3}
+    - sprite: {fileID: -1936017484, guid: 8b6a3f1cded8c784b9fedf0641cf5916, type: 3}
+    - sprite: {fileID: 1530701873, guid: 8b6a3f1cded8c784b9fedf0641cf5916, type: 3}
+    - sprite: {fileID: -699694670, guid: 8b6a3f1cded8c784b9fedf0641cf5916, type: 3}
+    - sprite: {fileID: -1087080483, guid: 8b6a3f1cded8c784b9fedf0641cf5916, type: 3}
+    - sprite: {fileID: -1263038275, guid: 8b6a3f1cded8c784b9fedf0641cf5916, type: 3}
+    - sprite: {fileID: -254910134, guid: 8b6a3f1cded8c784b9fedf0641cf5916, type: 3}
+    - sprite: {fileID: 479279546, guid: 8b6a3f1cded8c784b9fedf0641cf5916, type: 3}
+    - sprite: {fileID: 681945254, guid: 8b6a3f1cded8c784b9fedf0641cf5916, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -54528,7 +54560,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 400d6c285d25f8748aaff587fb6411f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
