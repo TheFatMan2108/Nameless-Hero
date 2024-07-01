@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da31ad2d450d3294a89786d127ba263c, type: 3}
+  m_Name: LightningSword
+  m_EditorClassIdentifier: 
+  itemName: Lightning Sword
+  icon: {fileID: 21300000, guid: 2fc797c5fb3bdbc4ea917c04afee0517, type: 3}
+  type: 1
+  dropRate: 100
+  equitmentType: 0
+  listItemEffect:
+  - {fileID: 11400000, guid: 7fd3ef1486ddf0245bcc2b1642aa9f48, type: 2}
+  Vitality: 0
+  Mind: 0
+  Endurance: 0
+  Strength: 0
+  Dexterity: 0
+  Intelligence: 0
+  damage: 1
+  critChance: 0
+  critPower: 0
+  maxHealth: 0
+  armor: 0
+  magicResistance: 0
+  fireDamage: 0
+  iceDamage: 0
+  lightDamage: 100
+  bloodDamage: 0
+  toxicDamage: 0

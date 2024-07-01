@@ -34,7 +34,6 @@ public class FXEntity : MonoBehaviour
         {
             particles.Add(transform.GetChild(0).transform.GetChild(i).gameObject);
         }
-        
         iceEffect = new Color[2];
         fireEffect = new Color[2];
         linghningEffect = new Color[2];

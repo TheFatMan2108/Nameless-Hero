@@ -48,12 +48,17 @@ public class WeaponManager : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(playerManager.attackCheck.position, playerManager.attackDistance);
         foreach (var hit in colliders)
         {
-            if (hit.GetComponent<Enemy>() != null)
+            if (hit.gameObject.TryGetComponent(out Enemy enemy))
             {
-                Enemy enemy = hit.GetComponent<Enemy>();
+                ItemEquitment item = Inventory.Instance.GetEquitment(EquitmentType.Weapon);
+                if (enemy.isDead||!enemy.gameObject.activeInHierarchy)return;
                 enemy.TakeDamage(playerManager.transform.position);
                 enemy.entityStats.SetEnemy(playerManager);
                 playerManager.entityStats.DoDamage(enemy);
+                if (item == null) return;
+                item.ExecuteItemEffect(enemy.transform);
+                
+
             }
         }
     }

@@ -15,3 +15,4 @@ MonoBehaviour:
   itemName: Book
   icon: {fileID: 21300000, guid: 8c0e5234c782b3c4b8bd1790d165dd7c, type: 3}
   type: 0
+  dropRate: 7.3

@@ -9,10 +9,20 @@ public class UI_ItemInventory : MonoBehaviour, IPointerDownHandler
 {
     public InventoryItem item;
     public GameObject icon, amount;
-
+    private SpriteRenderer sp;
     private void Awake()
     {
         UpdateItemData(null);
+    }
+    private void Start()
+    {
+        sp = PlayerManager.Instance.transform.GetChild(1).GetComponentInChildren<SpriteRenderer>();
+    }
+    private void Reset()
+    {
+        icon = transform.GetChild(0).gameObject;
+        amount = transform.GetChild(1).gameObject;
+
     }
     public void UpdateItemData(InventoryItem _item)
     {
@@ -22,17 +32,14 @@ public class UI_ItemInventory : MonoBehaviour, IPointerDownHandler
             icon.SetActive(true);
             amount.SetActive(true);
             icon.GetComponent<Image>().sprite = item.itemData.icon;
-            if (item.stack <= 1)amount.SetActive(false);
+            if (item.stack <= 1) amount.SetActive(false);
             else
             {
-            amount.SetActive(true);
-            amount.GetComponentInChildren<TMP_Text>().text = item.stack.ToString();
+                amount.SetActive(true);
+                amount.GetComponentInChildren<TMP_Text>().text = item.stack.ToString();
             }
         }
-        else
-        {
-            Clean();
-        }
+       
     }
     public void Clean()
     {
@@ -42,18 +49,19 @@ public class UI_ItemInventory : MonoBehaviour, IPointerDownHandler
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        if(item==null)return;
-        if(item.itemData.type == ItemType.Equitment)
-        {
-            Inventory.Instance.EquitmentInventory(item.itemData);
-        }
+
     }
     public void EnterOK()
     {
-        if (item == null) return;
+        if(item == null)return;
         if (item.itemData.type == ItemType.Equitment)
         {
+            if ((item.itemData as ItemEquitment).equitmentType == EquitmentType.Weapon)
+                sp.sprite = item.itemData.icon;
             Inventory.Instance.EquitmentInventory(item.itemData);
         }
+        
+
+
     }
 }

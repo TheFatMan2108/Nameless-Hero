@@ -50,6 +50,16 @@ public class Inventory : MonoBehaviour
         }
 
     }
+    public void UnEquitItem(ItemEquitment newItemEqutmentDelete)
+    {
+        if (newItemEqutmentDelete != null && inventoryEquitmentDictionary.TryGetValue(newItemEqutmentDelete, out InventoryItem value))
+        {
+            inventoryEquitment.Remove(value);
+            inventoryEquitmentDictionary.Remove(newItemEqutmentDelete);
+            AddItemInventory(newItemEqutmentDelete);
+           newItemEqutmentDelete.RemoveModifier();
+        }
+    }
     public void EquitmentInventory(ItemData _item)
     {
         ItemEquitment itemEquitment = _item as ItemEquitment;
@@ -60,14 +70,11 @@ public class Inventory : MonoBehaviour
             if(item.Key.equitmentType == itemEquitment.equitmentType) 
                 oldItem = item.Key;
         }
-        if(oldItem!=null&&inventoryEquitmentDictionary.TryGetValue(oldItem,out InventoryItem value)){
-            inventoryEquitment.Remove(value);
-            inventoryEquitmentDictionary.Remove(oldItem);
-            AddItemInventory(oldItem);
-        }
+        UnEquitItem(oldItem);
         inventoryEquitment.Add(inventoryItem);
         inventoryEquitmentDictionary.Add(itemEquitment, inventoryItem);
         RemoveItem(_item);
+        itemEquitment.AddModifier();
     }
     public void AddItemInventory(ItemData item)
     {
@@ -100,4 +107,19 @@ public class Inventory : MonoBehaviour
         }
         UpdateUI();
     }
+
+    public ItemEquitment GetEquitment(EquitmentType type)
+    {
+        ItemEquitment equitment = null;
+        foreach (KeyValuePair<ItemEquitment, InventoryItem> item in inventoryEquitmentDictionary)
+        {
+            if (item.Key.equitmentType == type)
+            {
+                equitment = item.Key;
+                break;
+            }
+        }
+        return equitment;
+    }
+
 }
