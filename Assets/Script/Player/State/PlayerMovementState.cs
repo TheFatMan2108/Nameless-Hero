@@ -22,7 +22,7 @@ public class PlayerMovementState : PlayerGroundState
     {
         base.Update();
         if(!playerManager.isKnockBack)
-        playerManager.rb.velocity = moveDirection.normalized * playerManager.moveSpeed;
+        playerManager.rb.velocity = moveDirection.normalized * playerManager.GetMoveSpeed();
         if (moveDirection.sqrMagnitude == 0) stateMachine.ChangeState(playerManager.idleState);
     }
 }

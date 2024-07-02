@@ -8,13 +8,20 @@ public class SlimeMoveState : SlimeGroundState
     private Vector2 positionMove;
     private float dirFace;
     private float zoneMove = 3;
+
     public SlimeMoveState(Enemy enemyBase, EnemyStateMachine stateMachine, string animBoolName, SlimeEnemy enemy) : base(enemyBase, stateMachine, animBoolName, enemy)
     {
+        this.enemy = enemy;
     }
 
     public override void Enter()
     {
         base.Enter();
+        if (enemy.originPosition == null)
+        {
+            Debug.LogError("Vui long them vung di chuyen vao");
+            return;
+        }
         x = Random.Range(enemy.originPosition.position.x - zoneMove, enemy.originPosition.position.x + zoneMove);
         y = Random.Range(enemy.originPosition.position.y - zoneMove, enemy.originPosition.position.y + zoneMove);
         positionMove = new Vector2(x, y);
@@ -51,7 +58,8 @@ public class SlimeMoveState : SlimeGroundState
 
     private void Move()
     {
-        enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, positionMove, 5 * Time.deltaTime);
+        enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, positionMove, enemy.GetMoveSpeed() * Time.deltaTime);
+        Debug.Log("toc do cua move + "+ enemy.GetMoveSpeed());
         if (positionMove == (Vector2)enemy.transform.position) stateMachine.ChangeState(enemy.idleState);
     }
 

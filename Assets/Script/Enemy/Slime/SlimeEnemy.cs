@@ -5,13 +5,14 @@ using UnityEngine;
 public class SlimeEnemy : Enemy
 {
     #region Info
-
+   
     #endregion
     #region State
     public SlimeIdleState idleState { get; private set; }
     public SlimeMoveState moveState { get; private set; }
     public SlimeAttackState attackState { get; private set; }
     public SlimeDeadState deadState { get; private set; }
+    public SlimeStun stunState { get; private set; }
     #endregion
     #region Transform
     public Transform originPosition;
@@ -23,6 +24,7 @@ public class SlimeEnemy : Enemy
         moveState = new SlimeMoveState(this, enemyStateMachine, "Move", this);
         attackState = new SlimeAttackState(this, enemyStateMachine, "Attack", this);
         deadState = new SlimeDeadState(this, enemyStateMachine, "Dead", this);
+        stunState = new SlimeStun(this, enemyStateMachine,"Stun",this);
         
     }
     protected override void Start()
@@ -35,7 +37,8 @@ public class SlimeEnemy : Enemy
     {
         base.Update();
         enemyStateMachine.enemyState.Update();
-        
+        if (isDead) return;
+
     }
     protected override void Reset()
     {
@@ -77,5 +80,21 @@ public class SlimeEnemy : Enemy
     {
         base.Dead();
         enemyStateMachine.ChangeState(deadState);
+        StartCoroutine(HideObject());
     }
+
+    public override void Stun(float timeStun)
+    {
+        base.Stun(timeStun);
+        enemyStateMachine.ChangeState(stunState);
+    }
+
+    IEnumerator HideObject()
+    {
+        GetComponent<CircleCollider2D>().enabled = false;
+        yield return new WaitForSeconds(10f);
+        gameObject.SetActive(false);
+    }
+
+    
 }
