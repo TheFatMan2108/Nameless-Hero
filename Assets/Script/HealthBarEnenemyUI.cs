@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBarUI : MonoBehaviour
+public class HealthBarEnenemyUI : MonoBehaviour
 {
-    Entity entity;
+    Enemy entity;
     Slider healthBar;
     EntityStats myStats;
     public float timeHideBar = 10;
     float currentTimer;
     private void Start()
     {
-        entity = GetComponentInParent<Entity>();
+        entity = GetComponentInParent<Enemy>();
         healthBar = GetComponentInChildren<Slider>();
         myStats = GetComponentInParent<EntityStats>();
         entity.OnFliped += Fliped;

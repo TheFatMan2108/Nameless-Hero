@@ -7,7 +7,10 @@ public class Entity : MonoBehaviour
 {
     #region Stats
     public float moveSpeed;
+    public float speedTemp;
+    private float slowMove;
     public float attackDistance;
+    public float timeStun = 0;
     [SerializeField] protected float waitEvent;
     [SerializeField] protected float knockBackDirection;
     [SerializeField] protected float knockBackTimer;
@@ -20,12 +23,13 @@ public class Entity : MonoBehaviour
     #region Bollean
     protected bool busy;
     public bool isKnockBack;
+    public bool isDead;
     #endregion
     #region Script
     protected FXEntity fXEntity;
     public EntityStats entityStats;
     public Action<float> OnFliped;
-    public Action changeHealth, hideBar;
+    
     #endregion
     protected EnemyStateMachine enemyStateMachine { get; private set; }
 
@@ -36,14 +40,15 @@ public class Entity : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         enemyStateMachine = new EnemyStateMachine();
         entityStats = GetComponent<EntityStats>();
+        isDead = false;
     }
     protected virtual void Start()
     {
-        
+        speedTemp = moveSpeed;
     }
     protected virtual void Update()
     {
-        
+       
     }
     public virtual void Flip(float dir)
     {
@@ -79,7 +84,6 @@ public class Entity : MonoBehaviour
     {
         StartCoroutine(KnockBack(direction));
         fXEntity.StartCoroutine("HitFX");
-        UpdateHealth();
     }
     public virtual IEnumerator KnockBack(Vector2 enemyDirection)
     {
@@ -90,9 +94,28 @@ public class Entity : MonoBehaviour
         isKnockBack = false;
         SetVelocity(0,0);
     }
+
     public virtual void Dead()
     {
-        hideBar();
+        isDead = true;
+        
     }
-    public void UpdateHealth() => changeHealth();
+    public virtual void Stun(float timeStun)
+    {
+        this.timeStun = timeStun;
+    }
+    
+    public virtual void ChangeSpeed(float newSpeed,float time)
+    {
+        slowMove = newSpeed;
+        animator.speed = GetMoveSpeed()/moveSpeed;
+        StartCoroutine(ReloadSpeed(time));
+    }
+    private IEnumerator ReloadSpeed(float time)
+    {
+        yield return new WaitForSeconds(time);
+        slowMove = 0;
+        animator.speed = GetMoveSpeed() / moveSpeed;
+    }
+    public float GetMoveSpeed() => moveSpeed-((slowMove/100)*moveSpeed);
 }
