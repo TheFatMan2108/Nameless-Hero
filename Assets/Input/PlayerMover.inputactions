@@ -189,6 +189,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UI",
+            "id": "59357b40-bf39-4227-bb7e-dd38eb4ad279",
+            "actions": [
+                {
+                    "name": "Menu",
+                    "type": "Value",
+                    "id": "74329959-ce43-4aef-98a6-03ed714a5af3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "054c72fb-dba2-4752-811e-bf5bf1539894",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

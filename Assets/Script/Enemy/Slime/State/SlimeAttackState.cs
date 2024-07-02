@@ -7,8 +7,10 @@ public class SlimeAttackState : SlimeGroundState
 {
     private Vector2 playerPosition;
     private float dirFace;
+    private SlimeEnemy enemy;
     public SlimeAttackState(Enemy enemyBase, EnemyStateMachine stateMachine, string animBoolName, SlimeEnemy enemy) : base(enemyBase, stateMachine, animBoolName, enemy)
     {
+        this.enemy = enemy;
     }
 
     public override void Enter()
@@ -41,7 +43,9 @@ public class SlimeAttackState : SlimeGroundState
     }
     private void Move()
     {
-        enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, playerPosition, 10 * Time.deltaTime);
+        enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, playerPosition, enemy.GetMoveSpeed() * Time.deltaTime);
+        Debug.Log("toc do cua attack + " + enemy.GetMoveSpeed());
+        if (enemy.isKnockBack) enemy.Stun(2);
         if (playerPosition == (Vector2)enemy.transform.position) stateMachine.ChangeState(enemy.idleState);
     }
     public override void Update()
