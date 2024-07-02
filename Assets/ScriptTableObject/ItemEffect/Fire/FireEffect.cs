@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,14 +10,14 @@ public class FireEffect : ItemEffect
     public override void ExecuteEffect(Transform positonEnemy)
     {
         Enemy enemy = positonEnemy.GetComponent<Enemy>();
-        Vector3 newPositon = enemy.FindPlayer().transform.GetComponent<Player>().GetMouseDirection();
-        Debug.Log(newPositon);
+        Vector2 dir = (Vector2)positonEnemy.position - (Vector2)enemy.FindPlayer().position;
+        dir.Normalize();
         for (int i = 1; i <= 5; i++)
         {
-            // chua sua duoc loi chem ra duong thang dung huong
-        GameObject newObj = Instantiate(objectPrefab,new Vector2(positonEnemy.position.x*newPositon.x,positonEnemy.position.y*newPositon.y), Quaternion.identity);
-        Destroy(newObj, 10f);
+            //cong thuc hay vl 
+            Vector3 spawnPosition = positonEnemy.position + (Vector3)(dir * i);
+            GameObject newObj = Instantiate(objectPrefab, spawnPosition, Quaternion.identity);
+            Destroy(newObj, 10f);
         }
     }
-
 }

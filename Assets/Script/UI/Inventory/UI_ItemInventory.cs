@@ -39,6 +39,11 @@ public class UI_ItemInventory : MonoBehaviour, IPointerDownHandler
                 amount.GetComponentInChildren<TMP_Text>().text = item.stack.ToString();
             }
         }
+        else
+        {
+            icon.SetActive(false);
+            amount.SetActive(false);
+        }
        
     }
     public void Clean()

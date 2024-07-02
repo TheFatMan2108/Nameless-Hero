@@ -29,7 +29,7 @@ public class Entity : MonoBehaviour
     protected FXEntity fXEntity;
     public EntityStats entityStats;
     public Action<float> OnFliped;
-    public Action changeHealth, hideBar;
+    
     #endregion
     protected EnemyStateMachine enemyStateMachine { get; private set; }
 
@@ -84,7 +84,6 @@ public class Entity : MonoBehaviour
     {
         StartCoroutine(KnockBack(direction));
         fXEntity.StartCoroutine("HitFX");
-        UpdateHealth();
     }
     public virtual IEnumerator KnockBack(Vector2 enemyDirection)
     {
@@ -99,13 +98,13 @@ public class Entity : MonoBehaviour
     public virtual void Dead()
     {
         isDead = true;
-        hideBar();
+        
     }
     public virtual void Stun(float timeStun)
     {
         this.timeStun = timeStun;
     }
-    public void UpdateHealth() => changeHealth();
+    
     public virtual void ChangeSpeed(float newSpeed,float time)
     {
         slowMove = newSpeed;

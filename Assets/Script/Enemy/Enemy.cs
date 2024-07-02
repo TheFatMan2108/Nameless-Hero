@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : Entity
 {
+    public Action changeHealth, hideBar;
     [SerializeField] protected float distanceBetween;
     protected override void Awake()
     {
@@ -40,6 +42,19 @@ public class Enemy : Entity
     {
         base.SetVelocity(input);
     }
+
+    public override void TakeDamage(Vector2 direction)
+    {
+        base.TakeDamage(direction);
+        UpdateHealth();
+    }
+
+    public override void Dead()
+    {
+        base.Dead();
+        hideBar();
+    }
+
     public virtual Transform FindPlayer()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, distanceBetween);
@@ -53,7 +68,7 @@ public class Enemy : Entity
         }
         return null;
     }
-
+    public void UpdateHealth() => changeHealth();
     public override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
