@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -12,16 +13,16 @@ public class Inventory : MonoBehaviour
     private UI_ItemInventory[] ui_ItemInventories;
     private UI_ItemEquitment[] ui_ItemEquitments;
     DataPersistenceManager dataManager;
-
+    private List<ItemData> inventoryLoadedItem;
     private void Awake()
     {
         if (Instance == null)Instance = this;
         else Destroy(gameObject);
-        dataManager = DataPersistenceManager.instance;
     }
 
     private void Start()
     {
+        dataManager = DataPersistenceManager.instance;
         inventoryItems = new List<InventoryItem>();
         inventoryEquitment = new List<InventoryItem>();
         inventoryDictionary = new Dictionary<ItemData, InventoryItem>();
@@ -35,20 +36,41 @@ public class Inventory : MonoBehaviour
 
     private void SetItemForList()
     {
-        foreach (InventoryItem item in dataManager.gameData.inventoryData.inventoryItems)
+        LoadItem();
+        foreach (KeyValuePair<string, int> pair in dataManager.gameData.inventoryData.inventory)
         {
-            inventoryItems.Add(item);
-            inventoryDictionary.Add(item.itemData, item); 
+            foreach (var item in inventoryLoadedItem)
+            {
+                if (item != null && item.ID.Equals(pair.Key))
+                {
+                    InventoryItem inventoryItem = new InventoryItem(item);
+                    inventoryItem.stack = pair.Value;
+                    inventoryItems.Add(inventoryItem);
+                    inventoryDictionary.Add(item, inventoryItem);
+                }
+            }
         }
-        foreach (InventoryItem item in dataManager.gameData.inventoryData.inventoryEquitment)
+        foreach (KeyValuePair<string, int> pair in dataManager.gameData.inventoryData.equitment)
         {
-            AddItemInventory(item.itemData);
+            foreach (var item in inventoryLoadedItem)
+            {
+                if (item != null && item.ID.Equals(pair.Key))
+                {
+                    AddItemInventory(item);
+                }
+            }
         }
-        foreach (InventoryItem item in dataManager.gameData.inventoryData.inventoryEquitment)
+        foreach (KeyValuePair<string, int> pair in dataManager.gameData.inventoryData.equitment)
         {
-           EquitmentInventory(item.itemData);
-            if ((item.itemData as ItemEquitment).equitmentType == EquitmentType.Weapon)
-                PlayerManager.Instance.transform.GetChild(1).GetComponentInChildren<SpriteRenderer>().sprite = item.itemData.icon;
+            foreach (var item in inventoryLoadedItem)
+            {
+                if (item != null && item.ID.Equals(pair.Key))
+                {
+                    EquitmentInventory(item);
+                    if ((item as ItemEquitment).equitmentType == EquitmentType.Weapon)
+                        PlayerManager.Instance.transform.GetChild(1).GetComponentInChildren<SpriteRenderer>().sprite = item.icon;
+                }
+            }
         }
     }
 
@@ -145,7 +167,27 @@ public class Inventory : MonoBehaviour
     }
     public void SaveData()
     {
-        dataManager.gameData.inventoryData.inventoryItems = inventoryItems;
-        dataManager.gameData.inventoryData.inventoryEquitment = inventoryEquitment;
+        dataManager.gameData.inventoryData.inventory.Clear();
+        dataManager.gameData.inventoryData.equitment.Clear();
+        foreach (KeyValuePair<ItemData,InventoryItem> item in inventoryDictionary)
+        {
+            dataManager.gameData.inventoryData.inventory.Add(item.Key.ID, item.Value.stack);
+        }
+        foreach (KeyValuePair<ItemEquitment, InventoryItem> item in inventoryEquitmentDictionary)
+        {
+            dataManager.gameData.inventoryData.equitment.Add(item.Key.ID, item.Value.stack);
+        }
+    }
+    public List<ItemData> LoadItem()
+    {
+        inventoryLoadedItem = new List<ItemData>();
+        string[] assetName = AssetDatabase.FindAssets("", new[] { "Assets/ScriptTableObject" });
+        foreach (string name in assetName)
+        {
+            var SOpath = AssetDatabase.GUIDToAssetPath(name);
+            var itemData = AssetDatabase.LoadAssetAtPath<ItemData>(SOpath);
+            inventoryLoadedItem.Add(itemData);
+        }
+        return inventoryLoadedItem;
     }
 }

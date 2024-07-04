@@ -116,7 +116,6 @@ public class DataPersistenceManager : MonoBehaviour
 
         // load any saved data from a file using the data handler
         this.gameData = dataHandler.Load(selectedProfileId);
-
         // start a new game if the data is null and we're configured to initialize data for debugging purposes
         if (this.gameData == null && initializeDataIfNull)
         {
@@ -140,7 +139,6 @@ public class DataPersistenceManager : MonoBehaviour
     public void SaveGame()
     {
         Inventory.Instance.SaveData();
-        Debug.Log(gameData.inventoryData.inventoryItems.Count);
         // return right away if data persistence is disabled
         if (disableDataPersistence)
         {

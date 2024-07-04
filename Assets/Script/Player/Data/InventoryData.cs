@@ -5,11 +5,10 @@ using UnityEngine;
 [Serializable]
 public class InventoryData 
 {
-    public List<InventoryItem> inventoryItems, inventoryEquitment;
-
+    public SerializableDictionary<string, int> inventory,equitment;
     public InventoryData()
     {
-        inventoryItems = new List<InventoryItem>();
-        inventoryEquitment = new List<InventoryItem> ();
+        inventory = new SerializableDictionary<string, int>();
+        equitment = new SerializableDictionary<string, int>();
     }
 }

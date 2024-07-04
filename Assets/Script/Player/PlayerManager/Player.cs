@@ -38,7 +38,7 @@ public class Player : Entity
     protected override void Awake()
     {
         base.Awake();
-        levelSystem = DataPersistenceManager.instance.gameData.levelSystem;
+       
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         weaponParent = GetComponentInChildren<WeaponParent>();
@@ -56,6 +56,7 @@ public class Player : Entity
     protected override void Start()
     {
         base.Start();
+        levelSystem = DataPersistenceManager.instance.gameData.levelSystem;
         playerStateMachine.Initialize(idleState);
     }
 

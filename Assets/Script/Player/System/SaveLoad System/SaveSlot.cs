@@ -33,7 +33,6 @@ public class SaveSlot : MonoBehaviour,IPointerClickHandler
     public void SetData(GameData data)
     {
         // there's no data for this profileId
-        Debug.Log(data);
         if (data == null)
         {
             hasData = false;

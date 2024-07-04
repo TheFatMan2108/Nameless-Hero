@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class UI_Status : MonoBehaviour
 {
-    private GameObject healthBar, manaBar, staminaBar,levelText,expBar;
+    private GameObject healthBar, manaBar, staminaBar,levelText,expBar,coin;
     private Player player;
     void Start()
     {
@@ -17,6 +17,7 @@ public class UI_Status : MonoBehaviour
         manaBar = transform.GetChild(1).transform.GetChild(1).gameObject;
         staminaBar = transform.GetChild(1).transform.GetChild(2).gameObject;
         levelText = transform.GetChild(1).transform.GetChild(3).gameObject;
+        coin = transform.GetChild(1).transform.GetChild(4).gameObject;
         SetStatus();
     }
 
