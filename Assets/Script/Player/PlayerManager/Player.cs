@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class Player : Entity
 {
+    #region Level
+    public LevelSystem levelSystem;
+    #endregion
     #region Input
     public Vector2 moverVector { get; private set; }
     public Vector2 mousePosition { get; private set; }
@@ -35,10 +38,12 @@ public class Player : Entity
     protected override void Awake()
     {
         base.Awake();
+        levelSystem = DataPersistenceManager.instance.gameData.levelSystem;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         weaponParent = GetComponentInChildren<WeaponParent>();
         effectSystem = transform.GetChild(2).GetComponentInChildren<GhostEffectSystem>();
+        // tets sau nay lam he thong tao nhan vat
         #region Call States
         playerStateMachine = new PlayerStateMachine();
         idleState = new PlayerIdleState(playerStateMachine, this, "Idle");

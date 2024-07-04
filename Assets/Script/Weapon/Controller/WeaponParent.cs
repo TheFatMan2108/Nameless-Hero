@@ -9,6 +9,7 @@ public class WeaponParent : MonoBehaviour
 
     private void Update()
     {
+        if (PlayerManager.Instance.player.isDead) return; 
         Vector2 direction = (pointerposition - (Vector2)transform.position).normalized;
         transform.right = direction;
         Vector2 scale = transform.localScale;

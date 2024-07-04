@@ -59,7 +59,6 @@ public class SlimeMoveState : SlimeGroundState
     private void Move()
     {
         enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, positionMove, enemy.GetMoveSpeed() * Time.deltaTime);
-        Debug.Log("toc do cua move + "+ enemy.GetMoveSpeed());
         if (positionMove == (Vector2)enemy.transform.position) stateMachine.ChangeState(enemy.idleState);
     }
 

@@ -11,23 +11,45 @@ public class Inventory : MonoBehaviour
     [SerializeField] private Dictionary<ItemEquitment, InventoryItem> inventoryEquitmentDictionary;
     private UI_ItemInventory[] ui_ItemInventories;
     private UI_ItemEquitment[] ui_ItemEquitments;
-    
+    DataPersistenceManager dataManager;
 
     private void Awake()
     {
         if (Instance == null)Instance = this;
         else Destroy(gameObject);
+        dataManager = DataPersistenceManager.instance;
     }
 
     private void Start()
     {
         inventoryItems = new List<InventoryItem>();
-        inventoryDictionary = new Dictionary<ItemData, InventoryItem>();
         inventoryEquitment = new List<InventoryItem>();
+        inventoryDictionary = new Dictionary<ItemData, InventoryItem>();
         inventoryEquitmentDictionary = new Dictionary<ItemEquitment, InventoryItem>();
 
         ui_ItemInventories = inventorySlotParent.GetComponentsInChildren<UI_ItemInventory>();
-        ui_ItemEquitments = inventorySlotEquitment.GetComponentsInChildren<UI_ItemEquitment>();  
+        ui_ItemEquitments = inventorySlotEquitment.GetComponentsInChildren<UI_ItemEquitment>();
+        SetItemForList();
+        UpdateUI();
+    }
+
+    private void SetItemForList()
+    {
+        foreach (InventoryItem item in dataManager.gameData.inventoryData.inventoryItems)
+        {
+            inventoryItems.Add(item);
+            inventoryDictionary.Add(item.itemData, item); 
+        }
+        foreach (InventoryItem item in dataManager.gameData.inventoryData.inventoryEquitment)
+        {
+            AddItemInventory(item.itemData);
+        }
+        foreach (InventoryItem item in dataManager.gameData.inventoryData.inventoryEquitment)
+        {
+           EquitmentInventory(item.itemData);
+            if ((item.itemData as ItemEquitment).equitmentType == EquitmentType.Weapon)
+                PlayerManager.Instance.transform.GetChild(1).GetComponentInChildren<SpriteRenderer>().sprite = item.itemData.icon;
+        }
     }
 
     public void UpdateUI()
@@ -48,7 +70,6 @@ public class Inventory : MonoBehaviour
                     ui_ItemEquitments[i].UpdateItemData(item.Value);
             }
         }
-
     }
     public void UnEquitItem(ItemEquitment newItemEqutmentDelete)
     {
@@ -88,6 +109,7 @@ public class Inventory : MonoBehaviour
             InventoryItem inventoryItem = new InventoryItem(item);
             inventoryItems.Add(inventoryItem);
             inventoryDictionary.Add(item, inventoryItem );
+            Debug.Log(inventoryDictionary.Count);
         }
         UpdateUI();
     }
@@ -121,5 +143,9 @@ public class Inventory : MonoBehaviour
         }
         return equitment;
     }
-
+    public void SaveData()
+    {
+        dataManager.gameData.inventoryData.inventoryItems = inventoryItems;
+        dataManager.gameData.inventoryData.inventoryEquitment = inventoryEquitment;
+    }
 }

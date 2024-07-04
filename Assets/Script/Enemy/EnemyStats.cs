@@ -58,4 +58,33 @@ public class EnemyStats : EntityStats
         dropSystem.GenerateDrop();
     }
 
+    protected override void ExecuteToxicDamage()
+    {
+        base.ExecuteToxicDamage();
+        (isMe as Enemy).UpdateHealth();
+    }
+
+    protected override void ExecuteBloodDamage()
+    {
+        base.ExecuteBloodDamage();
+        (isMe as Enemy).UpdateHealth();
+    }
+
+    protected override void ExecuteLightDamage()
+    {
+        base.ExecuteLightDamage();
+        (isMe as Enemy).UpdateHealth();
+    }
+
+    protected override void ExecuteIceDamage()
+    {
+        base.ExecuteIceDamage();
+        (isMe as Enemy).UpdateHealth();
+    }
+
+    protected override void ExecuteFireDamage()
+    {
+        base.ExecuteFireDamage();
+        (isMe as Enemy).UpdateHealth();
+    }
 }

@@ -63,6 +63,7 @@ public class EntityStats : MonoBehaviour
     public float curentMana;
     public float curentStamina;
 
+  
 
     protected virtual void Start()
     {
@@ -112,33 +113,58 @@ public class EntityStats : MonoBehaviour
         #endregion
         #region effect status
         if (entity == null) return;
+        ExecuteFireDamage();
+        ExecuteIceDamage();
+        ExecuteLightDamage();
+        ExecuteBloodDamage();
+        ExecuteToxicDamage();
+        #endregion
+    }
+
+    protected virtual void ExecuteToxicDamage()
+    {
+        if (toxicDamageTimer < 0 && isToxic)
+        {
+            TakeDamage(entity.entityStats.toxicDamage.GetValue());
+            toxicDamageTimer = toxicDamageCooldown;
+        }
+    }
+
+    protected virtual void ExecuteBloodDamage()
+    {
+        if (bloodDamageTimer < 0 && isBloodThorns)
+        {
+            TakeDamage((CaculatorBlood() / 100f) * isMe.entityStats.GetMaxHealth());
+            bloodDamageTimer = bloodDamageCooldown;
+        }
+    }
+
+    protected virtual void ExecuteLightDamage()
+    {
+        if (lightDamageTimer < 0 && isLight)
+        {
+            isMe.Stun(lightTimer);
+            lightDamageTimer = lightDamageCooldown;
+        }
+    }
+
+    protected virtual void ExecuteIceDamage()
+    {
+        if (isChilled)
+        {
+            isMe.ChangeSpeed(90, 10); // per second
+            iceDamageTimer = iceDamageCooldown;
+        }
+    }
+
+    protected virtual void ExecuteFireDamage()
+    {
         if (fireDamageTimer < 0 && isIgnited)
         {
             float totalDamage = CheckAmor(isMe, entity.entityStats.fireDamage.GetValue());
             TakeDamage(totalDamage);
             fireDamageTimer = fireDamageCoolDown;
         }
-        if ( isChilled)
-        {
-            isMe.ChangeSpeed(90,10); // per second
-            iceDamageTimer = iceDamageCooldown;
-        }
-        if (lightDamageTimer < 0 && isLight)
-        {
-            isMe.Stun(lightTimer);
-            lightDamageTimer = lightDamageCooldown;
-        }
-        if (bloodDamageTimer < 0 && isBloodThorns)
-        {
-            TakeDamage((CaculatorBlood()/100f)*isMe.entityStats.GetMaxHealth());
-            bloodDamageTimer = bloodDamageCooldown;
-        }
-        if (toxicDamageTimer < 0 && isToxic)
-        {
-            TakeDamage(entity.entityStats.toxicDamage.GetValue());
-            toxicDamageTimer = toxicDamageCooldown;
-        }
-        #endregion
     }
 
     private float CaculatorBlood()
@@ -308,5 +334,9 @@ public class EntityStats : MonoBehaviour
     public void SetEnemy(Entity enemy)
     {
         entity = enemy;
+    }
+    public void ReloadStamina(float newStamina)
+    {
+        if (curentStamina < GetMaxStamina()) curentStamina += newStamina;
     }
 }

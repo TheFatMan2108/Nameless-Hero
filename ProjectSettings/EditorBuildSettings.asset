@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Test/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/MainMenu.unity
+    guid: 9ce52cc24d7b1e842a283a9d75076598
+  - enabled: 1
+    path: Assets/Scenes/OverWord.unity
+    guid: c0b9f686847362246a1df202ada7f572
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: a442580f8afd8b3469426a48359e0f13, type: 2}

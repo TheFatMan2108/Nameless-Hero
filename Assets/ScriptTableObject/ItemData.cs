@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[Serializable]
 public enum ItemType
 {
     Masterial,Equitment
 }
+[Serializable]
 [CreateAssetMenu(fileName ="Item Data ",menuName ="Data/Item")]
 public class ItemData : ScriptableObject
 {
