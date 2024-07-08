@@ -22,6 +22,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c793b4252f0803745ab55cc92c9ecf52
+    m_Address: Assets/Prefab/Item/ItemDrop.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: dba852a325daaf34e9f58e4e244376cb, type: 2}
   m_SchemaSet:

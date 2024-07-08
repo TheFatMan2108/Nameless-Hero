@@ -21,6 +21,10 @@ public class PlayerGroundState : PlayerState
     public override void Update()
     {
         base.Update();
-        if(Input.GetKeyDown(KeyCode.LeftShift)&&playerManager.cooldownDash<0) stateMachine.ChangeState(playerManager.dashState);
+        if (Input.GetKeyDown(KeyCode.LeftShift) && playerManager.cooldownDash < 0)
+        {
+            stateMachine.ChangeState(playerManager.dashState);
+            return;
+        }
     }
 }

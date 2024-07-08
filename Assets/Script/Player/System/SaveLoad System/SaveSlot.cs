@@ -16,7 +16,7 @@ public class SaveSlot : MonoBehaviour,IPointerClickHandler
     [Header("Content")]
     [SerializeField] private GameObject noDataContent;
     [SerializeField] private GameObject hasDataContent;
-    [SerializeField] private TextMeshProUGUI coin,level,timePlay,hp;
+    [SerializeField] private TextMeshProUGUI fireTime,level,timePlay,hp;
 
     [Header("Clear Data Button")]
     [SerializeField] private Button clearButton;
@@ -51,9 +51,8 @@ public class SaveSlot : MonoBehaviour,IPointerClickHandler
             level.text = "Level: "+data.levelSystem.level.ToString();
             hp.text = "HP: "+data.statsData.curentHeatlth+"/"+data.statsData.GetMaxHealth();
             DateTime dateFromBinary = DateTime.FromBinary(data.lastUpdated);
-
-            timePlay.text = dateFromBinary.ToString("HH:mm:ss dd/MM/yyyy"); ;
-
+            timePlay.text = dateFromBinary.ToString("HH:mm:ss dd/MM/yyyy");
+            fireTime.text = data.fireTime.ToString("n0");
         }
     }
 

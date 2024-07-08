@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class UI_Status : MonoBehaviour
 {
-    private GameObject healthBar, manaBar, staminaBar,levelText,expBar,coin;
+    private GameObject healthBar, manaBar, staminaBar,levelText,expBar,fireTime;
     private Player player;
     void Start()
     {
@@ -17,7 +17,7 @@ public class UI_Status : MonoBehaviour
         manaBar = transform.GetChild(1).transform.GetChild(1).gameObject;
         staminaBar = transform.GetChild(1).transform.GetChild(2).gameObject;
         levelText = transform.GetChild(1).transform.GetChild(3).gameObject;
-        coin = transform.GetChild(1).transform.GetChild(4).gameObject;
+        fireTime = transform.GetChild(1).transform.GetChild(4).GetChild(0).gameObject;
         SetStatus();
     }
 
@@ -26,6 +26,7 @@ public class UI_Status : MonoBehaviour
         healthBar.GetComponent<Slider>().maxValue = player.entityStats.GetMaxHealth();
         manaBar.GetComponent<Slider>().maxValue = player.entityStats.GetMaxMana();
         staminaBar.GetComponent<Slider>().maxValue = player.entityStats.GetMaxStamina();
+
     }
 
     // Update is called once per frame
@@ -41,6 +42,7 @@ public class UI_Status : MonoBehaviour
         staminaBar.GetComponent<Slider>().value = player.entityStats.curentStamina;
         levelText.GetComponent<TMP_Text>().text = player.levelSystem.level.ToString();
         expBar.GetComponent<Image>().fillAmount = player.levelSystem.exp / player.levelSystem.expNextLevel;
+        fireTime.GetComponentInChildren<TMP_Text>().text = player.fireTime.ToString("n0");
     }
     public void TestUplevel()
     {

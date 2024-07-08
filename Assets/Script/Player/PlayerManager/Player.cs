@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Player : Entity
 {
@@ -29,6 +30,7 @@ public class Player : Entity
     #region Stats
     public float cooldownDash;
     public bool isAttackBusy { get; private set; }
+    public float fireTime { get; private set; }
     #endregion
     #region Weapons
     private WeaponParent weaponParent;
@@ -38,12 +40,10 @@ public class Player : Entity
     protected override void Awake()
     {
         base.Awake();
-       
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         weaponParent = GetComponentInChildren<WeaponParent>();
         effectSystem = transform.GetChild(2).GetComponentInChildren<GhostEffectSystem>();
-        // tets sau nay lam he thong tao nhan vat
         #region Call States
         playerStateMachine = new PlayerStateMachine();
         idleState = new PlayerIdleState(playerStateMachine, this, "Idle");
@@ -56,7 +56,9 @@ public class Player : Entity
     protected override void Start()
     {
         base.Start();
+        transform.position = DataPersistenceManager.instance.gameData.playerPosition;
         levelSystem = DataPersistenceManager.instance.gameData.levelSystem;
+        fireTime = DataPersistenceManager.instance.gameData.fireTime;
         playerStateMachine.Initialize(idleState);
     }
 
@@ -66,6 +68,8 @@ public class Player : Entity
         playerStateMachine.State.Update();
         weaponParent.pointerposition = mousePosition;
         cooldownDash -= Time.deltaTime;
+        Vector2 screenPosition = Mouse.current.position.ReadValue();
+        UpdateMousePosition(screenPosition);
     }
 
     public void OnMover(InputAction.CallbackContext callback)
@@ -79,6 +83,15 @@ public class Player : Entity
             moverVector = Vector2.zero;
         }
     }
+
+
+    private void UpdateMousePosition(Vector2 screenPosition)
+    {
+        Vector3 mousePos = screenPosition;
+        mousePos.z = Camera.main.nearClipPlane;
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePos);
+       
+    }
     public void GetMousePosition(InputAction.CallbackContext callback)
     {
         Vector3 mousePos = callback.ReadValue<Vector2>();
@@ -88,7 +101,7 @@ public class Player : Entity
     }
     public Vector2 GetMouseDirection()
     {
-        return (mousePosition - new Vector2(transform.position.x, transform.position.y));
+        return (mousePosition - (Vector2)transform.position);
     }
  
 
@@ -111,5 +124,21 @@ public class Player : Entity
         base.Dead();
         playerStateMachine.ChangeState(deadState);
     }
-
+    public void SetFireTime(float fireTime)
+    {
+        this.fireTime += fireTime;
+        DataPersistenceManager.instance.gameData.fireTime = this.fireTime;
+    }
+    public void AddExp(float exp)
+    {
+        levelSystem.AddExp(exp);
+    }
+    public void SavePositon()
+    {
+        DataPersistenceManager.instance.gameData.playerPosition = transform.position;
+    }
+    public void IframePlayer(bool isOn)
+    {
+        GetComponent<Collider2D>().enabled = !isOn;
+    }
 }

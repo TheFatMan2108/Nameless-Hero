@@ -15,14 +15,15 @@ public class PlayerDashState : PlayerState
     {
         base.Enter();
         playerManager.SetAttackBusy(true);
-        dashArea = 0.2f;
+        dashArea = 0.5f;
         playerManager.SetCooldown(1.5f);
-        GetDirection();
-        playerManager.SetVelocity(dashDirection * dashForce);
+        playerManager.SetVelocity(GetDirection() * dashForce);
         playerManager.OnGhost();
+        playerManager.IframePlayer(true);
+        
     }
 
-    private void GetDirection()
+    private Vector2 GetDirection()
     {
         float x = playerManager.GetMouseDirection().x;
         float y = playerManager.GetMouseDirection().y;
@@ -30,7 +31,7 @@ public class PlayerDashState : PlayerState
         x = Eounding(x);
         y = Eounding(y);
         #endregion
-        dashDirection = new Vector2(x, y);
+        return new Vector2(x, y);
     }
 
     private float Eounding(float num)
@@ -49,7 +50,7 @@ public class PlayerDashState : PlayerState
     {
         base.Exit();
         playerManager.SetAttackBusy(false);
-
+        playerManager.IframePlayer(false);
     }
 
     public override void Update()

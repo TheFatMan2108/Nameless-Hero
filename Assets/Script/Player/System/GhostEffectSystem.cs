@@ -16,7 +16,7 @@ public class GhostEffectSystem : MonoBehaviour
         timer-=Time.deltaTime;
         if(timer < 0)
         {
-            timer = 0.01f;
+            timer = 0.02f;
             GameObject ghost = Instantiate(ghostEffect,transform.position,Quaternion.identity,parentSpawn);
             ghost.GetComponent<SpriteRenderer>().sprite = sprite;
             ghost.GetComponent<SpriteRenderer>().flipX = flip;

@@ -714,7 +714,7 @@ MonoBehaviour:
   profileId: 1
   noDataContent: {fileID: 6876670589012297187}
   hasDataContent: {fileID: 4022781398253392380}
-  coin: {fileID: 6115340645668552588}
+  fireTime: {fileID: 6115340645668552588}
   level: {fileID: 7867548150374814041}
   timePlay: {fileID: 3216261018172356924}
   hp: {fileID: 2235843860326251579}

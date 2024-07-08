@@ -12,6 +12,7 @@ public class GameData
     public StatsData statsData;
     public LevelSystem levelSystem;
     public InventoryData inventoryData;
+    public float fireTime =0;
 
     // the values defined in this constructor will be the default values
     // the game starts with when there's no data to load
@@ -21,6 +22,7 @@ public class GameData
         statsData = new StatsData();
         inventoryData = new InventoryData();
         levelSystem = new LevelSystem();
+        fireTime = 0;
     }
 
     public int GetPercentageComplete()

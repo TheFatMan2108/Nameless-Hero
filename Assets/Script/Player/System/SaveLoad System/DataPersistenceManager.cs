@@ -138,7 +138,9 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void SaveGame()
     {
-        Inventory.Instance.SaveData();
+        if(Inventory.Instance!=null)Inventory.Instance.SaveData();
+        if(PlayerManager.Instance!=null)PlayerManager.Instance.player.SavePositon();
+
         // return right away if data persistence is disabled
         if (disableDataPersistence)
         {

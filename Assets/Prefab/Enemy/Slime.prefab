@@ -505,7 +505,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  speedTemp: 0
   attackDistance: 0.49
+  timeStun: 0
   waitEvent: 3
   knockBackDirection: 30
   knockBackTimer: 0.1
@@ -593,6 +595,12 @@ MonoBehaviour:
   maxHealth:
     baseValue: 1
     modifiers: []
+  maxMana:
+    baseValue: 0
+    modifiers: []
+  maxStamina:
+    baseValue: 0
+    modifiers: []
   armor:
     baseValue: 0
     modifiers: []
@@ -609,7 +617,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: []
   bloodDamage:
-    baseValue: 10
+    baseValue: 0
     modifiers: []
   toxicDamage:
     baseValue: 10
@@ -620,7 +628,9 @@ MonoBehaviour:
   isBloodThorns: 0
   isToxic: 0
   curentHeatlth: 0
-  level: 10
+  curentMana: 0
+  curentStamina: 0
+  level: 1
   scale: 0.4
 --- !u!114 &6299591432023503688
 MonoBehaviour:
@@ -635,12 +645,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amountDrop: 10
+  fireTimeDrop: 10
+  exp: 150
   canDropList:
   - {fileID: 11400000, guid: c797d5e256b91754bad545cc0067c410, type: 2}
   - {fileID: 11400000, guid: 25ce3e2a4f8276e48b4d6bcf36c226b2, type: 2}
   - {fileID: 11400000, guid: 8a09b857cda0c1f43b4802a3a5567bfe, type: 2}
   - {fileID: 11400000, guid: c08d2d1362d08c641a621628de7409a0, type: 2}
   objectDrop: {fileID: 2965846391240583493, guid: c793b4252f0803745ab55cc92c9ecf52, type: 3}
+  fireTime: {fileID: 8776686648836274086, guid: fe69e93e26bfdcc4ba1084d76180cbf5, type: 3}
 --- !u!1 &8235772197361380140
 GameObject:
   m_ObjectHideFlags: 0

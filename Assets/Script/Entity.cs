@@ -69,7 +69,7 @@ public class Entity : MonoBehaviour
     }
     public virtual void SetVelocity(Vector2 input)
     {
-        rb.velocity = input;
+        rb.velocity = input.normalized;
     }
     public virtual void SetAttackBusy(bool busy)
     {
