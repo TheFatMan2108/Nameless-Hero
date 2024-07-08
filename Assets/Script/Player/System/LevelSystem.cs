@@ -3,12 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [System.Serializable]
-public class LevelSystem 
+public class LevelSystem
 {
     public int level;
     public float exp;
     public int pointStats;
     public float expNextLevel;
+
+    public LevelSystem()
+    {
+        LevelBegin();
+    }
 
     public void LevelBegin()
     {
@@ -26,5 +31,6 @@ public class LevelSystem
             level++;
             expNextLevel = (float)(500f * Math.Pow(level, 2) - (500 * level));
         }
+        DataPersistenceManager.instance.gameData.levelSystem = this;
     }
 }

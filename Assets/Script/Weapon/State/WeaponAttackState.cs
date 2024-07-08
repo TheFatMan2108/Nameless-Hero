@@ -17,6 +17,7 @@ public class WeaponAttackState : WeaponState
         base.Enter();
         timeAttack = 0.1f;
         if(attackCounter > 2||Time.time > attackTimer+comboWindow) attackCounter = 0;
+        PlayerManager.Instance.player.entityStats.curentStamina -= (weaponManager.attackMovement[attackCounter]*1.5f);
         weaponManager.animator.SetInteger("AttackCounter",attackCounter);
         GetDirection();
         weaponManager.playerManager.SetVelocity(weaponManager.attackMovement[attackCounter]*directionAttack.x, weaponManager.attackMovement[attackCounter]*directionAttack.y);
