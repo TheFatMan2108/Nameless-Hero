@@ -13,7 +13,6 @@ public class ItemEquitment : ItemData
 {
     public EquitmentType equitmentType;
     public ItemEffect[] listItemEffect;
-    
     [Header("Stats")]
     public float Vitality;
     public float Mind;

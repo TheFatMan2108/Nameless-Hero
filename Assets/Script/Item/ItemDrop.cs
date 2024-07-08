@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ItemDrop : MonoBehaviour
 {
-    [SerializeField] private int amountDrop;
+    [SerializeField] private int amountDrop,fireTimeDrop,exp;
     [SerializeField] private ItemData[] canDropList;
-    [SerializeField] private GameObject objectDrop;
+    [SerializeField] private GameObject objectDrop,fireTime;
     private List<ItemData> dropList = new List<ItemData>();
 
 
@@ -25,11 +25,18 @@ public class ItemDrop : MonoBehaviour
                 ItemData item = dropList[Random.Range(0, dropList.Count - 1)];
                 dropList.Remove(item);
                 DropItem(item);
-                Debug.Log(dropList.Count);
             }
         }
+        // viet drop coin o day
+        GameObject fireCoin = Instantiate(fireTime,transform.position,Quaternion.identity);
+        fireCoin.GetComponent<ParticleCollector>().totalFireTime = fireTimeDrop;
+        Destroy(fireCoin,100);
+        PlayerManager.Instance.player.AddExp(exp);
     }
-
+    private async void Reset()
+    {
+        objectDrop = await AddressLoader.LoaderAddress<GameObject>("Assets/Prefab/Item/ItemDrop.prefab");
+    }
     public void DropItem(ItemData item)
     {
         GameObject newGameObject = Instantiate(objectDrop, transform.position, Quaternion.identity);

@@ -1,0 +1,1165 @@
+fileFormatVersion: 2
+guid: 7560d2a673717104cb7bef0f69b13a47
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Coins_topdown_outline_18x18res_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 36
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 8}
+        - {x: -3, y: 8}
+        - {x: -3, y: 7}
+        - {x: -5, y: 7}
+        - {x: -5, y: 6}
+        - {x: -6, y: 6}
+        - {x: -6, y: 5}
+        - {x: -7, y: 5}
+        - {x: -7, y: 3}
+        - {x: -8, y: 3}
+        - {x: -8, y: -3}
+        - {x: -7, y: -3}
+        - {x: -7, y: -5}
+        - {x: -6, y: -5}
+        - {x: -6, y: -6}
+        - {x: -5, y: -6}
+        - {x: -5, y: -7}
+        - {x: -4, y: -7}
+        - {x: -4, y: -8}
+        - {x: 4, y: -8}
+        - {x: 4, y: -7}
+        - {x: 5, y: -7}
+        - {x: 5, y: -6}
+        - {x: 6, y: -6}
+        - {x: 6, y: -5}
+        - {x: 7, y: -5}
+        - {x: 7, y: -3}
+        - {x: 8, y: -3}
+        - {x: 8, y: 3}
+        - {x: 7, y: 3}
+        - {x: 7, y: 5}
+        - {x: 6, y: 5}
+        - {x: 6, y: 6}
+        - {x: 5, y: 6}
+        - {x: 5, y: 7}
+        - {x: 3, y: 7}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c28a1d61a7e5ee458b0c8bead11ca90
+      internalID: -719538217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coins_topdown_outline_18x18res_1
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 36
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 8}
+        - {x: -2, y: 8}
+        - {x: -2, y: 7}
+        - {x: -4, y: 7}
+        - {x: -4, y: 6}
+        - {x: -5, y: 6}
+        - {x: -5, y: 5}
+        - {x: -6, y: 5}
+        - {x: -6, y: 4}
+        - {x: -7, y: 4}
+        - {x: -7, y: 2}
+        - {x: -8, y: 2}
+        - {x: -8, y: -3}
+        - {x: -7, y: -3}
+        - {x: -7, y: -5}
+        - {x: -6, y: -5}
+        - {x: -6, y: -6}
+        - {x: -5, y: -6}
+        - {x: -5, y: -7}
+        - {x: -3, y: -7}
+        - {x: -3, y: -8}
+        - {x: 2, y: -8}
+        - {x: 2, y: -7}
+        - {x: 4, y: -7}
+        - {x: 4, y: -6}
+        - {x: 5, y: -6}
+        - {x: 5, y: -5}
+        - {x: 6, y: -5}
+        - {x: 6, y: -3}
+        - {x: 7, y: -3}
+        - {x: 7, y: 3}
+        - {x: 7, y: 3}
+        - {x: 7, y: 5}
+        - {x: 6, y: 5}
+        - {x: 6, y: 6}
+        - {x: 5, y: 6}
+        - {x: 5, y: 7}
+        - {x: 3, y: 7}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fad125bc02737048ae8c72212c15202
+      internalID: -1010372752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coins_topdown_outline_18x18res_2
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 36
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 4, y: -3}
+        - {x: 4, y: 7}
+        - {x: 3, y: 7}
+        - {x: 3, y: 8}
+        - {x: -1, y: 8}
+        - {x: -1, y: 7}
+        - {x: -2, y: 7}
+        - {x: -2, y: 5}
+        - {x: -3, y: 5}
+        - {x: -3, y: 3}
+        - {x: -4, y: 3}
+        - {x: -4, y: -6}
+        - {x: -4, y: -6}
+        - {x: -4, y: -7}
+        - {x: -3, y: -7}
+        - {x: -3, y: -8}
+        - {x: 1, y: -8}
+        - {x: 1, y: -7}
+        - {x: 2, y: -7}
+        - {x: 2, y: -5}
+        - {x: 3, y: -5}
+        - {x: 3, y: -3}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f72ba3a1706887c48bbfaa29e93bcc09
+      internalID: -303666766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coins_topdown_outline_18x18res_3
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 36
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -1, y: 8}
+        - {x: -1, y: -8}
+        - {x: 1, y: -8}
+        - {x: 1, y: 8}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1b6295d0036ff949a6e969db388c18a
+      internalID: -841325462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coins_topdown_outline_18x18res_4
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 36
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 3}
+        - {x: 3, y: 5}
+        - {x: 2, y: 5}
+        - {x: 2, y: 7}
+        - {x: 1, y: 7}
+        - {x: 1, y: 8}
+        - {x: -3, y: 8}
+        - {x: -3, y: 7}
+        - {x: -4, y: 7}
+        - {x: -4, y: -3}
+        - {x: -3, y: -3}
+        - {x: -3, y: -5}
+        - {x: -2, y: -5}
+        - {x: -2, y: -7}
+        - {x: -1, y: -7}
+        - {x: -1, y: -8}
+        - {x: 3, y: -8}
+        - {x: 3, y: -7}
+        - {x: 4, y: -7}
+        - {x: 4, y: 3}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ff327009413fcf40a1db8d469915586
+      internalID: 1526762829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coins_topdown_outline_18x18res_5
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 36
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 7}
+        - {x: 2, y: 8}
+        - {x: -3, y: 8}
+        - {x: -3, y: 7}
+        - {x: -5, y: 7}
+        - {x: -5, y: 6}
+        - {x: -6, y: 6}
+        - {x: -6, y: 5}
+        - {x: -7, y: 5}
+        - {x: -7, y: -3}
+        - {x: -6, y: -3}
+        - {x: -6, y: -5}
+        - {x: -5, y: -5}
+        - {x: -5, y: -6}
+        - {x: -4, y: -6}
+        - {x: -4, y: -7}
+        - {x: -2, y: -7}
+        - {x: -2, y: -8}
+        - {x: 3, y: -8}
+        - {x: 3, y: -7}
+        - {x: 5, y: -7}
+        - {x: 5, y: -6}
+        - {x: 6, y: -6}
+        - {x: 6, y: -5}
+        - {x: 7, y: -5}
+        - {x: 7, y: -3}
+        - {x: 8, y: -3}
+        - {x: 8, y: 2}
+        - {x: 7, y: 2}
+        - {x: 7, y: 4}
+        - {x: 6, y: 4}
+        - {x: 6, y: 5}
+        - {x: 5, y: 5}
+        - {x: 5, y: 6}
+        - {x: 4, y: 6}
+        - {x: 4, y: 7}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70c17eb34df1f30499dc3e573bdb2995
+      internalID: -1237663071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coins_topdown_outline_18x18res_6
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 36
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 8}
+        - {x: -3, y: 8}
+        - {x: -3, y: 7}
+        - {x: -5, y: 7}
+        - {x: -5, y: 6}
+        - {x: -6, y: 6}
+        - {x: -6, y: 5}
+        - {x: -7, y: 5}
+        - {x: -7, y: 3}
+        - {x: -8, y: 3}
+        - {x: -8, y: -3}
+        - {x: -7, y: -3}
+        - {x: -7, y: -5}
+        - {x: -6, y: -5}
+        - {x: -6, y: -6}
+        - {x: -5, y: -6}
+        - {x: -5, y: -7}
+        - {x: -4, y: -7}
+        - {x: -4, y: -8}
+        - {x: 4, y: -8}
+        - {x: 4, y: -7}
+        - {x: 5, y: -7}
+        - {x: 5, y: -6}
+        - {x: 6, y: -6}
+        - {x: 6, y: -5}
+        - {x: 7, y: -5}
+        - {x: 7, y: -3}
+        - {x: 8, y: -3}
+        - {x: 8, y: 3}
+        - {x: 7, y: 3}
+        - {x: 7, y: 5}
+        - {x: 6, y: 5}
+        - {x: 6, y: 6}
+        - {x: 5, y: 6}
+        - {x: 5, y: 7}
+        - {x: 3, y: 7}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82ea652cd06db1c468cb5e23384d86c9
+      internalID: -2033028200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coins_topdown_outline_18x18res_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 18
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 8}
+        - {x: -3, y: 8}
+        - {x: -3, y: 7}
+        - {x: -5, y: 7}
+        - {x: -5, y: 6}
+        - {x: -6, y: 6}
+        - {x: -6, y: 5}
+        - {x: -7, y: 5}
+        - {x: -7, y: 3}
+        - {x: -8, y: 3}
+        - {x: -8, y: -3}
+        - {x: -7, y: -3}
+        - {x: -7, y: -5}
+        - {x: -6, y: -5}
+        - {x: -6, y: -6}
+        - {x: -5, y: -6}
+        - {x: -5, y: -7}
+        - {x: -4, y: -7}
+        - {x: -4, y: -8}
+        - {x: 4, y: -8}
+        - {x: 4, y: -7}
+        - {x: 5, y: -7}
+        - {x: 5, y: -6}
+        - {x: 6, y: -6}
+        - {x: 6, y: -5}
+        - {x: 7, y: -5}
+        - {x: 7, y: -3}
+        - {x: 8, y: -3}
+        - {x: 8, y: 3}
+        - {x: 7, y: 3}
+        - {x: 7, y: 5}
+        - {x: 6, y: 5}
+        - {x: 6, y: 6}
+        - {x: 5, y: 6}
+        - {x: 5, y: 7}
+        - {x: 3, y: 7}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 729d8120363c24b43a845009a359bd58
+      internalID: -568136091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coins_topdown_outline_18x18res_8
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 18
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 8}
+        - {x: -2, y: 8}
+        - {x: -2, y: 7}
+        - {x: -4, y: 7}
+        - {x: -4, y: 6}
+        - {x: -5, y: 6}
+        - {x: -5, y: 5}
+        - {x: -6, y: 5}
+        - {x: -6, y: 4}
+        - {x: -7, y: 4}
+        - {x: -7, y: 2}
+        - {x: -8, y: 2}
+        - {x: -8, y: -3}
+        - {x: -7, y: -3}
+        - {x: -7, y: -5}
+        - {x: -6, y: -5}
+        - {x: -6, y: -6}
+        - {x: -5, y: -6}
+        - {x: -5, y: -7}
+        - {x: -3, y: -7}
+        - {x: -3, y: -8}
+        - {x: 2, y: -8}
+        - {x: 2, y: -7}
+        - {x: 4, y: -7}
+        - {x: 4, y: -6}
+        - {x: 5, y: -6}
+        - {x: 5, y: -5}
+        - {x: 6, y: -5}
+        - {x: 6, y: -3}
+        - {x: 7, y: -3}
+        - {x: 7, y: 3}
+        - {x: 7, y: 3}
+        - {x: 7, y: 5}
+        - {x: 6, y: 5}
+        - {x: 6, y: 6}
+        - {x: 5, y: 6}
+        - {x: 5, y: 7}
+        - {x: 3, y: 7}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aa4733b48d336041aa2ce432b190a0b
+      internalID: -1377414852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coins_topdown_outline_18x18res_9
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 18
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 4, y: -3}
+        - {x: 4, y: 7}
+        - {x: 3, y: 7}
+        - {x: 3, y: 8}
+        - {x: -1, y: 8}
+        - {x: -1, y: 7}
+        - {x: -2, y: 7}
+        - {x: -2, y: 5}
+        - {x: -3, y: 5}
+        - {x: -3, y: 3}
+        - {x: -4, y: 3}
+        - {x: -4, y: -6}
+        - {x: -4, y: -6}
+        - {x: -4, y: -7}
+        - {x: -3, y: -7}
+        - {x: -3, y: -8}
+        - {x: 1, y: -8}
+        - {x: 1, y: -7}
+        - {x: 2, y: -7}
+        - {x: 2, y: -5}
+        - {x: 3, y: -5}
+        - {x: 3, y: -3}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6abe2d373369bc6478d4e908974e12d0
+      internalID: -2133354017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coins_topdown_outline_18x18res_10
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 18
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -1, y: 8}
+        - {x: -1, y: -8}
+        - {x: 1, y: -8}
+        - {x: 1, y: 8}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6fc45f2682b1004b81ccc729771c391
+      internalID: -2098750180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coins_topdown_outline_18x18res_11
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 18
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 3}
+        - {x: 3, y: 5}
+        - {x: 2, y: 5}
+        - {x: 2, y: 7}
+        - {x: 1, y: 7}
+        - {x: 1, y: 8}
+        - {x: -3, y: 8}
+        - {x: -3, y: 7}
+        - {x: -4, y: 7}
+        - {x: -4, y: -3}
+        - {x: -3, y: -3}
+        - {x: -3, y: -5}
+        - {x: -2, y: -5}
+        - {x: -2, y: -7}
+        - {x: -1, y: -7}
+        - {x: -1, y: -8}
+        - {x: 3, y: -8}
+        - {x: 3, y: -7}
+        - {x: 4, y: -7}
+        - {x: 4, y: 3}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5311e428396f4c4e9f8fad12582a907
+      internalID: -1411478157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coins_topdown_outline_18x18res_12
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 18
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 7}
+        - {x: 2, y: 8}
+        - {x: -3, y: 8}
+        - {x: -3, y: 7}
+        - {x: -5, y: 7}
+        - {x: -5, y: 6}
+        - {x: -6, y: 6}
+        - {x: -6, y: 5}
+        - {x: -7, y: 5}
+        - {x: -7, y: -3}
+        - {x: -6, y: -3}
+        - {x: -6, y: -5}
+        - {x: -5, y: -5}
+        - {x: -5, y: -6}
+        - {x: -4, y: -6}
+        - {x: -4, y: -7}
+        - {x: -2, y: -7}
+        - {x: -2, y: -8}
+        - {x: 3, y: -8}
+        - {x: 3, y: -7}
+        - {x: 5, y: -7}
+        - {x: 5, y: -6}
+        - {x: 6, y: -6}
+        - {x: 6, y: -5}
+        - {x: 7, y: -5}
+        - {x: 7, y: -3}
+        - {x: 8, y: -3}
+        - {x: 8, y: 2}
+        - {x: 7, y: 2}
+        - {x: 7, y: 4}
+        - {x: 6, y: 4}
+        - {x: 6, y: 5}
+        - {x: 5, y: 5}
+        - {x: 5, y: 6}
+        - {x: 4, y: 6}
+        - {x: 4, y: 7}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09ebe86c8824970478d8a829adbd050e
+      internalID: -1651375319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coins_topdown_outline_18x18res_13
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 18
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 8}
+        - {x: -3, y: 8}
+        - {x: -3, y: 7}
+        - {x: -5, y: 7}
+        - {x: -5, y: 6}
+        - {x: -6, y: 6}
+        - {x: -6, y: 5}
+        - {x: -7, y: 5}
+        - {x: -7, y: 3}
+        - {x: -8, y: 3}
+        - {x: -8, y: -3}
+        - {x: -7, y: -3}
+        - {x: -7, y: -5}
+        - {x: -6, y: -5}
+        - {x: -6, y: -6}
+        - {x: -5, y: -6}
+        - {x: -5, y: -7}
+        - {x: -4, y: -7}
+        - {x: -4, y: -8}
+        - {x: 4, y: -8}
+        - {x: 4, y: -7}
+        - {x: 5, y: -7}
+        - {x: 5, y: -6}
+        - {x: 6, y: -6}
+        - {x: 6, y: -5}
+        - {x: 7, y: -5}
+        - {x: 7, y: -3}
+        - {x: 8, y: -3}
+        - {x: 8, y: 3}
+        - {x: 7, y: 3}
+        - {x: 7, y: 5}
+        - {x: 6, y: 5}
+        - {x: 6, y: 6}
+        - {x: 5, y: 6}
+        - {x: 5, y: 7}
+        - {x: 3, y: 7}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cea6fc7bb576834f83857119126eeb7
+      internalID: -1310764183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coins_topdown_outline_18x18res_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 8}
+        - {x: -3, y: 8}
+        - {x: -3, y: 7}
+        - {x: -5, y: 7}
+        - {x: -5, y: 6}
+        - {x: -6, y: 6}
+        - {x: -6, y: 5}
+        - {x: -7, y: 5}
+        - {x: -7, y: 3}
+        - {x: -8, y: 3}
+        - {x: -8, y: -3}
+        - {x: -7, y: -3}
+        - {x: -7, y: -5}
+        - {x: -6, y: -5}
+        - {x: -6, y: -6}
+        - {x: -5, y: -6}
+        - {x: -5, y: -7}
+        - {x: -4, y: -7}
+        - {x: -4, y: -8}
+        - {x: 4, y: -8}
+        - {x: 4, y: -7}
+        - {x: 5, y: -7}
+        - {x: 5, y: -6}
+        - {x: 6, y: -6}
+        - {x: 6, y: -5}
+        - {x: 7, y: -5}
+        - {x: 7, y: -3}
+        - {x: 8, y: -3}
+        - {x: 8, y: 3}
+        - {x: 7, y: 3}
+        - {x: 7, y: 5}
+        - {x: 6, y: 5}
+        - {x: 6, y: 6}
+        - {x: 5, y: 6}
+        - {x: 5, y: 7}
+        - {x: 3, y: 7}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 505bb92faf2f93a4b931acfd7bdb6b8a
+      internalID: 2036902435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coins_topdown_outline_18x18res_15
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 0
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 8}
+        - {x: -2, y: 8}
+        - {x: -2, y: 7}
+        - {x: -4, y: 7}
+        - {x: -4, y: 6}
+        - {x: -5, y: 6}
+        - {x: -5, y: 5}
+        - {x: -6, y: 5}
+        - {x: -6, y: 4}
+        - {x: -7, y: 4}
+        - {x: -7, y: 2}
+        - {x: -8, y: 2}
+        - {x: -8, y: -3}
+        - {x: -7, y: -3}
+        - {x: -7, y: -5}
+        - {x: -6, y: -5}
+        - {x: -6, y: -6}
+        - {x: -5, y: -6}
+        - {x: -5, y: -7}
+        - {x: -3, y: -7}
+        - {x: -3, y: -8}
+        - {x: 2, y: -8}
+        - {x: 2, y: -7}
+        - {x: 4, y: -7}
+        - {x: 4, y: -6}
+        - {x: 5, y: -6}
+        - {x: 5, y: -5}
+        - {x: 6, y: -5}
+        - {x: 6, y: -3}
+        - {x: 7, y: -3}
+        - {x: 7, y: 3}
+        - {x: 7, y: 3}
+        - {x: 7, y: 5}
+        - {x: 6, y: 5}
+        - {x: 6, y: 6}
+        - {x: 5, y: 6}
+        - {x: 5, y: 7}
+        - {x: 3, y: 7}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cf81b4aa36b7084eb0696185a0c7898
+      internalID: -273702252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coins_topdown_outline_18x18res_16
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 0
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 4, y: -3}
+        - {x: 4, y: 7}
+        - {x: 3, y: 7}
+        - {x: 3, y: 8}
+        - {x: -1, y: 8}
+        - {x: -1, y: 7}
+        - {x: -2, y: 7}
+        - {x: -2, y: 5}
+        - {x: -3, y: 5}
+        - {x: -3, y: 3}
+        - {x: -4, y: 3}
+        - {x: -4, y: -6}
+        - {x: -4, y: -6}
+        - {x: -4, y: -7}
+        - {x: -3, y: -7}
+        - {x: -3, y: -8}
+        - {x: 1, y: -8}
+        - {x: 1, y: -7}
+        - {x: 2, y: -7}
+        - {x: 2, y: -5}
+        - {x: 3, y: -5}
+        - {x: 3, y: -3}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cfbb348fbaa5ef41bee68ff73624eb3
+      internalID: -120366560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coins_topdown_outline_18x18res_17
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 0
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -1, y: 8}
+        - {x: -1, y: -8}
+        - {x: 1, y: -8}
+        - {x: 1, y: 8}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c15fedf554b7da4eadeaca766e034fa
+      internalID: -1461281811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coins_topdown_outline_18x18res_18
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 3}
+        - {x: 3, y: 5}
+        - {x: 2, y: 5}
+        - {x: 2, y: 7}
+        - {x: 1, y: 7}
+        - {x: 1, y: 8}
+        - {x: -3, y: 8}
+        - {x: -3, y: 7}
+        - {x: -4, y: 7}
+        - {x: -4, y: -3}
+        - {x: -3, y: -3}
+        - {x: -3, y: -5}
+        - {x: -2, y: -5}
+        - {x: -2, y: -7}
+        - {x: -1, y: -7}
+        - {x: -1, y: -8}
+        - {x: 3, y: -8}
+        - {x: 3, y: -7}
+        - {x: 4, y: -7}
+        - {x: 4, y: 3}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b9b32c319c53fa4ba26347b94bae216
+      internalID: 1754539466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coins_topdown_outline_18x18res_19
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 0
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2, y: 7}
+        - {x: 2, y: 8}
+        - {x: -3, y: 8}
+        - {x: -3, y: 7}
+        - {x: -5, y: 7}
+        - {x: -5, y: 6}
+        - {x: -6, y: 6}
+        - {x: -6, y: 5}
+        - {x: -7, y: 5}
+        - {x: -7, y: -3}
+        - {x: -6, y: -3}
+        - {x: -6, y: -5}
+        - {x: -5, y: -5}
+        - {x: -5, y: -6}
+        - {x: -4, y: -6}
+        - {x: -4, y: -7}
+        - {x: -2, y: -7}
+        - {x: -2, y: -8}
+        - {x: 3, y: -8}
+        - {x: 3, y: -7}
+        - {x: 5, y: -7}
+        - {x: 5, y: -6}
+        - {x: 6, y: -6}
+        - {x: 6, y: -5}
+        - {x: 7, y: -5}
+        - {x: 7, y: -3}
+        - {x: 8, y: -3}
+        - {x: 8, y: 2}
+        - {x: 7, y: 2}
+        - {x: 7, y: 4}
+        - {x: 6, y: 4}
+        - {x: 6, y: 5}
+        - {x: 5, y: 5}
+        - {x: 5, y: 6}
+        - {x: 4, y: 6}
+        - {x: 4, y: 7}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aac87d46a6812ec46b06faaf8d2cd14b
+      internalID: -50428706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coins_topdown_outline_18x18res_20
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 0
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 8}
+        - {x: -3, y: 8}
+        - {x: -3, y: 7}
+        - {x: -5, y: 7}
+        - {x: -5, y: 6}
+        - {x: -6, y: 6}
+        - {x: -6, y: 5}
+        - {x: -7, y: 5}
+        - {x: -7, y: 3}
+        - {x: -8, y: 3}
+        - {x: -8, y: -3}
+        - {x: -7, y: -3}
+        - {x: -7, y: -5}
+        - {x: -6, y: -5}
+        - {x: -6, y: -6}
+        - {x: -5, y: -6}
+        - {x: -5, y: -7}
+        - {x: -4, y: -7}
+        - {x: -4, y: -8}
+        - {x: 4, y: -8}
+        - {x: 4, y: -7}
+        - {x: 5, y: -7}
+        - {x: 5, y: -6}
+        - {x: 6, y: -6}
+        - {x: 6, y: -5}
+        - {x: 7, y: -5}
+        - {x: 7, y: -3}
+        - {x: 8, y: -3}
+        - {x: 8, y: 3}
+        - {x: 7, y: 3}
+        - {x: 7, y: 5}
+        - {x: 6, y: 5}
+        - {x: 6, y: 6}
+        - {x: 5, y: 6}
+        - {x: 5, y: 7}
+        - {x: 3, y: 7}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d10d1bd0b33f99459a274acdd37b511
+      internalID: -301569926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Coins_topdown_outline_18x18res_0: -719538217
+      Coins_topdown_outline_18x18res_1: -1010372752
+      Coins_topdown_outline_18x18res_10: -2098750180
+      Coins_topdown_outline_18x18res_11: -1411478157
+      Coins_topdown_outline_18x18res_12: -1651375319
+      Coins_topdown_outline_18x18res_13: -1310764183
+      Coins_topdown_outline_18x18res_14: 2036902435
+      Coins_topdown_outline_18x18res_15: -273702252
+      Coins_topdown_outline_18x18res_16: -120366560
+      Coins_topdown_outline_18x18res_17: -1461281811
+      Coins_topdown_outline_18x18res_18: 1754539466
+      Coins_topdown_outline_18x18res_19: -50428706
+      Coins_topdown_outline_18x18res_2: -303666766
+      Coins_topdown_outline_18x18res_20: -301569926
+      Coins_topdown_outline_18x18res_3: -841325462
+      Coins_topdown_outline_18x18res_4: 1526762829
+      Coins_topdown_outline_18x18res_5: -1237663071
+      Coins_topdown_outline_18x18res_6: -2033028200
+      Coins_topdown_outline_18x18res_7: -568136091
+      Coins_topdown_outline_18x18res_8: -1377414852
+      Coins_topdown_outline_18x18res_9: -2133354017
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

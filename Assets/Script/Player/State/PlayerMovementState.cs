@@ -21,8 +21,8 @@ public class PlayerMovementState : PlayerGroundState
     public override void Update()
     {
         base.Update();
-        if(!playerManager.isKnockBack)
-        playerManager.rb.velocity = moveDirection.normalized * playerManager.GetMoveSpeed();
+        if(!playerManager.isKnockBack) playerManager.rb.velocity = moveDirection.normalized * playerManager.GetMoveSpeed();
+
         if (moveDirection.sqrMagnitude == 0) stateMachine.ChangeState(playerManager.idleState);
     }
 }
