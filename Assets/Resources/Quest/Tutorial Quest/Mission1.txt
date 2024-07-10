@@ -1,0 +1,1 @@
+1	fasle	Khoi su thap hoa	giet 2 con slime	1000	500	Gathering,2

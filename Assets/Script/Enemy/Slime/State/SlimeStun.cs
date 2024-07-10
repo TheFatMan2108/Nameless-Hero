@@ -20,6 +20,7 @@ public class SlimeStun : EnemyState
     public override void Exit()
     {
         base.Exit();
+        
     }
 
     public override void Update()

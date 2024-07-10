@@ -120,6 +120,7 @@ public class DataPersistenceManager : MonoBehaviour
         if (this.gameData == null && initializeDataIfNull)
         {
             NewGame();
+            Debug.Log("Bi null roi");
         }
 
         // if no data can be loaded, don't continue
@@ -139,8 +140,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void SaveGame()
     {
         if(Inventory.Instance!=null)Inventory.Instance.SaveData();
-        if(PlayerManager.Instance!=null)PlayerManager.Instance.player.SavePositon();
-
+        if(PlayerManager.Instance!=null)PlayerManager.Instance.player.SaveData();
         // return right away if data persistence is disabled
         if (disableDataPersistence)
         {

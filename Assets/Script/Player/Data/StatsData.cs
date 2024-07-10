@@ -47,7 +47,6 @@ public class StatsData
         curentHeatlth = GetMaxHealth();
         curentMana = GetMaxMana();
         curentStamina = GetMaxStamina();
-
     }
     public float GetMaxHealth() => maxHealth.GetValue() + Vitality.GetValue() * 5;
     public float GetMaxMana() => maxMana.GetValue() + Mind.GetValue() * 5;

@@ -10,6 +10,7 @@ public class UI_ItemInventory : MonoBehaviour, IPointerDownHandler
     public InventoryItem item;
     public GameObject icon, amount;
     private SpriteRenderer sp;
+    protected Player player;
     private void Awake()
     {
         UpdateItemData(null);
@@ -17,6 +18,7 @@ public class UI_ItemInventory : MonoBehaviour, IPointerDownHandler
     private void Start()
     {
         sp = PlayerManager.Instance.transform.GetChild(1).GetComponentInChildren<SpriteRenderer>();
+        player = PlayerManager.Instance.player;
     }
     private void Reset()
     {
@@ -51,6 +53,7 @@ public class UI_ItemInventory : MonoBehaviour, IPointerDownHandler
         item = null;
         icon.SetActive(false);
         amount.SetActive(false);
+        player.status.SetStatus();
     }
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -64,6 +67,7 @@ public class UI_ItemInventory : MonoBehaviour, IPointerDownHandler
             if ((item.itemData as ItemEquitment).equitmentType == EquitmentType.Weapon)
                 sp.sprite = item.itemData.icon;
             Inventory.Instance.EquitmentInventory(item.itemData);
+            player.status.SetStatus();
         }
         
 

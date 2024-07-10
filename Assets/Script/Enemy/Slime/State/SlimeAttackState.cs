@@ -24,6 +24,16 @@ public class SlimeAttackState : SlimeGroundState
     {
         base.Exit();
     }
+    public override void Update()
+    {
+        base.Update();
+        Move();
+    }
+    public override void IsTriggerCalled()
+    {
+        base.IsTriggerCalled();
+        
+    }
     private void Flip()
     {
         dirFace = CalculateAngle(enemy.transform.position, playerPosition);
@@ -44,19 +54,8 @@ public class SlimeAttackState : SlimeGroundState
     private void Move()
     {
         enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, playerPosition, enemy.GetMoveSpeed() * Time.deltaTime);
-        Debug.Log("toc do cua attack + " + enemy.GetMoveSpeed());
         if (enemy.isKnockBack) enemy.Stun(2);
         if (playerPosition == (Vector2)enemy.transform.position) stateMachine.ChangeState(enemy.idleState);
-    }
-    public override void Update()
-    {
-        base.Update();
-        Move();
-    }
-    public override void IsTriggerCalled()
-    {
-        base.IsTriggerCalled();
-        
     }
 }
 

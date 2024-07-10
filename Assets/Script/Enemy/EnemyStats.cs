@@ -9,11 +9,13 @@ public class EnemyStats : EntityStats
     [Range(0f, 1f)]
     [SerializeField] private float scale = 0.4f;
     protected ItemDrop dropSystem;
+    protected Enemy enemy;
     protected override void Start()
     {
         LoadPower();
         base.Start();
         dropSystem = GetComponent<ItemDrop>();
+        enemy = GetComponent<Enemy>();
     }
 
     private void LoadPower()
@@ -48,14 +50,16 @@ public class EnemyStats : EntityStats
     {
         base.TakeDamage(damage);
         if(isMe.isDead)return;
+        enemy.SetFloatingText(damage.ToString());
+        Debug.Log(enemy.transform.position);
         if(curentHeatlth<=0)Dead();
     }
 
     protected override void Dead()
     {
         base.Dead();
-        isMe.Dead();
         dropSystem.GenerateDrop();
+        enemy.Dead();
     }
 
     protected override void ExecuteToxicDamage()

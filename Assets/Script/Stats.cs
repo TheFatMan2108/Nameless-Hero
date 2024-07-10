@@ -18,6 +18,8 @@ public class Stats
         return finalDamage;
     }
     public void SetDefaulValue(float value) =>baseValue = value;
+    public float GetBaseValue() => baseValue;
+    public void AddValue(float value)=>this.baseValue += value;
     public void AddModifier(float modifier) => modifiers.Add(modifier);
     public void RemoveModifier(float modifier) => modifiers.Remove(modifier);
 

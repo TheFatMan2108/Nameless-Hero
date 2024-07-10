@@ -1,12 +1,17 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Enemy : Entity
 {
     public Action changeHealth, hideBar;
+    [SerializeField] protected CinemachineImpulseSource impulseSource;
     [SerializeField] protected float distanceBetween;
+    [SerializeField] protected ScreenShakeProfile profile;
+    [SerializeField] protected GameObject floatingText;
     protected override void Awake()
     {
         base.Awake();
@@ -14,6 +19,7 @@ public class Enemy : Entity
     protected override void Start()
     {
         base.Start();
+        impulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
     protected override void Update()
@@ -47,12 +53,23 @@ public class Enemy : Entity
     {
         base.TakeDamage(direction);
         UpdateHealth();
+        CameraShakeManager.instance.ScreenShakeFromProfile(profile,impulseSource);
     }
-
+    public void SetFloatingText(string text)
+    {
+        GameObject fText = Instantiate(floatingText, transform.position, Quaternion.identity);
+        fText.GetComponent<TMP_Text>().text = text;
+    }
     public override void Dead()
     {
         base.Dead();
         hideBar();
+    }
+
+    public override void Stun(float timeStun)
+    {
+        base.Stun(timeStun);
+        SetFloatingText("Parry");
     }
 
     public virtual Transform FindPlayer()

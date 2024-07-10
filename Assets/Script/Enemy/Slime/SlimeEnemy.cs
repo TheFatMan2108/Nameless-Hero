@@ -81,6 +81,7 @@ public class SlimeEnemy : Enemy
         base.Dead();
         enemyStateMachine.ChangeState(deadState);
         StartCoroutine(HideObject());
+        GameManager.Instance.SetCurrentForQuest(1);
     }
 
     public override void Stun(float timeStun)
@@ -95,6 +96,5 @@ public class SlimeEnemy : Enemy
         yield return new WaitForSeconds(10f);
         gameObject.SetActive(false);
     }
-
-    
+  
 }

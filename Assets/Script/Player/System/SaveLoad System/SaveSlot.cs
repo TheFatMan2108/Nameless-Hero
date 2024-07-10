@@ -74,6 +74,7 @@ public class SaveSlot : MonoBehaviour,IPointerClickHandler
             // load
             DataPersistenceManager.instance.ChangeSelectedProfileId(GetProfileId());
             DataPersistenceManager.instance.LoadGame();
+            // sau nay load ten the gioi player dang o
             SceneManager.LoadScene("OverWord");
 
         }

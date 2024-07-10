@@ -18,15 +18,14 @@ public class UI_Status : MonoBehaviour
         staminaBar = transform.GetChild(1).transform.GetChild(2).gameObject;
         levelText = transform.GetChild(1).transform.GetChild(3).gameObject;
         fireTime = transform.GetChild(1).transform.GetChild(4).GetChild(0).gameObject;
-        SetStatus();
     }
 
-    private void SetStatus()
+    public void SetStatus()
     {
         healthBar.GetComponent<Slider>().maxValue = player.entityStats.GetMaxHealth();
         manaBar.GetComponent<Slider>().maxValue = player.entityStats.GetMaxMana();
         staminaBar.GetComponent<Slider>().maxValue = player.entityStats.GetMaxStamina();
-
+        
     }
 
     // Update is called once per frame

@@ -15,9 +15,8 @@ public class SlimeAnimation : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(slimeEnemy.attackCheck.position, slimeEnemy.attackDistance);
         foreach (var hit in colliders)
         {
-            if (hit.GetComponent<Player>() != null)
+            if (hit.TryGetComponent(out Player player))
             {
-                Player player = hit.GetComponent<Player>();
                 player.TakeDamage(slimeEnemy.transform.position);
                 player.entityStats.SetEnemy(slimeEnemy);
                 slimeEnemy.entityStats.DoDamage(player);

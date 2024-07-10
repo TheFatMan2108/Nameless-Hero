@@ -13,6 +13,7 @@ public class GameData
     public LevelSystem levelSystem;
     public InventoryData inventoryData;
     public float fireTime =0;
+    // sau nay them so main quest da hoan thanh
 
     // the values defined in this constructor will be the default values
     // the game starts with when there's no data to load
@@ -28,8 +29,15 @@ public class GameData
     public int GetPercentageComplete()
     {
         // viet code tinh phan tram tien trinh choi o day
-
         return 100;
     }
-   
+   public void SetStatsData(EntityStats stats)
+    {
+        statsData.Vitality = stats.Vitality;
+        statsData.Mind = stats.Mind;
+        statsData.Endurance = stats.Endurance;
+        statsData.Strength = stats.Strength;
+        statsData.Dexterity = stats.Dexterity;
+        statsData.Intelligence = stats.Intelligence;
+    }
 }

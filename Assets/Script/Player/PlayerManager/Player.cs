@@ -35,13 +35,16 @@ public class Player : Entity
     #region Weapons
     private WeaponParent weaponParent;
     #endregion
-    
-    
+    #region UI
+    public UI_Status status { get; private set; }
+    #endregion
+
     protected override void Awake()
     {
         base.Awake();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        status = GetComponentInChildren<UI_Status>();
         weaponParent = GetComponentInChildren<WeaponParent>();
         effectSystem = transform.GetChild(2).GetComponentInChildren<GhostEffectSystem>();
         #region Call States
@@ -56,10 +59,18 @@ public class Player : Entity
     protected override void Start()
     {
         base.Start();
+        LoadData();
+        playerStateMachine.Initialize(idleState);
+    }
+
+    private void LoadData()
+    {
         transform.position = DataPersistenceManager.instance.gameData.playerPosition;
         levelSystem = DataPersistenceManager.instance.gameData.levelSystem;
         fireTime = DataPersistenceManager.instance.gameData.fireTime;
-        playerStateMachine.Initialize(idleState);
+        entityStats.SetData(DataPersistenceManager.instance.gameData);
+        entityStats.ReloadStats();
+        status.SetStatus();
     }
 
     protected override void Update()
@@ -127,15 +138,18 @@ public class Player : Entity
     public void SetFireTime(float fireTime)
     {
         this.fireTime += fireTime;
-        DataPersistenceManager.instance.gameData.fireTime = this.fireTime;
+        
     }
     public void AddExp(float exp)
     {
         levelSystem.AddExp(exp);
     }
-    public void SavePositon()
+    public void SaveData()
     {
+        DataPersistenceManager.instance.gameData.fireTime = this.fireTime;
+        DataPersistenceManager.instance.gameData.SetStatsData(entityStats);
         DataPersistenceManager.instance.gameData.playerPosition = transform.position;
+
     }
     public void IframePlayer(bool isOn)
     {

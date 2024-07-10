@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +15,8 @@ public class Entity : MonoBehaviour
     [SerializeField] protected float waitEvent;
     [SerializeField] protected float knockBackDirection;
     [SerializeField] protected float knockBackTimer;
+    [Range(0f, 0.5f)]
+    [SerializeField] protected float timeSlow = 0.2f;
     #endregion
     #region Component
     public Animator animator;
@@ -103,6 +106,7 @@ public class Entity : MonoBehaviour
     public virtual void Stun(float timeStun)
     {
         this.timeStun = timeStun;
+        StartCoroutine(SlowTime());
     }
     
     public virtual void ChangeSpeed(float newSpeed,float time)
@@ -118,4 +122,10 @@ public class Entity : MonoBehaviour
         animator.speed = GetMoveSpeed() / moveSpeed;
     }
     public float GetMoveSpeed() => moveSpeed-((slowMove/100)*moveSpeed);
+    private IEnumerator SlowTime()
+    {
+        Time.timeScale =timeSlow;
+        yield return new WaitForSeconds(0.1f);
+        Time.timeScale = 1f;
+    }
 }

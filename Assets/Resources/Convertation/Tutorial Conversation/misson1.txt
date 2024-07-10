@@ -1,0 +1,4 @@
+1	Player	Chao ong toi la luu hang gia toi can 1 noi de co the nghi nhung toi khong co tien nen khong biet ong can gi khong de toi giup
+2	Villiger	Duoc thoi ta dang can kiem 10 bong hoa hay lam no giup ta
+3	Villiger	Ta se tra cong cho nguoi
+4	Player	Cam on ong rat nhieu toi se lam ngay

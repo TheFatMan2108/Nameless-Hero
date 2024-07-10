@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEditor.Playables;
 using UnityEngine;
 
@@ -63,14 +64,14 @@ public class EntityStats : MonoBehaviour
     public float curentMana;
     public float curentStamina;
 
-  
-
-    protected virtual void Start()
+    private void Awake()
     {
         isMe = GetComponentInParent<Entity>();
-        ReloadStats();
         fxEntity = GetComponent<FXEntity>();
-        
+    }
+    protected virtual void Start()
+    {
+        ReloadStats();
     }
 
     public void ReloadStats()
@@ -195,6 +196,7 @@ public class EntityStats : MonoBehaviour
         DoMagicDamage(entity);
     }
 
+  
     private float CheckAmor(Entity entity, float totalDamage)
     {
         totalDamage -=entity.entityStats.armor.GetValue();
@@ -310,6 +312,7 @@ public class EntityStats : MonoBehaviour
     public virtual void TakeDamage(float damage)
     {
         curentHeatlth -= damage;
+       
     }
     protected virtual void Dead() { }
     private bool CanCrit()
@@ -338,5 +341,18 @@ public class EntityStats : MonoBehaviour
     public void ReloadStamina(float newStamina)
     {
         if (curentStamina < GetMaxStamina()) curentStamina += newStamina;
+    }
+
+    public void SetData(GameData data)
+    {
+        Vitality = data.statsData.Vitality;
+        Mind = data.statsData.Mind;
+        Endurance = data.statsData.Endurance;
+        Strength = data.statsData.Strength;
+        Dexterity = data.statsData.Dexterity;
+        Intelligence = data.statsData.Intelligence;
+        maxHealth = data.statsData.maxHealth;
+        maxMana = data.statsData.maxMana;
+        maxStamina = data.statsData.maxStamina;
     }
 }
