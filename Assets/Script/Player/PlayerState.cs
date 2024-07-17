@@ -26,8 +26,6 @@ public class PlayerState
     public virtual void Update()
     {
         if(isDead) return;
-        PlayAnimation(playerManager.GetMouseDirection().normalized);
-        moveDirection = playerManager.moverVector;
         CountDownFun();
     }
 
@@ -44,7 +42,7 @@ public class PlayerState
         #endregion
     }
 
-    private void PlayAnimation(Vector2 mousePosition)
+    protected virtual void PlayAnimation(Vector2 mousePosition)
     {
         playerManager.animator.SetFloat("Horizontal", mousePosition.normalized.x);
         playerManager.animator.SetFloat("Vertical", mousePosition.normalized.y);

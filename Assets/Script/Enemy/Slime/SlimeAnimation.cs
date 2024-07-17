@@ -17,6 +17,7 @@ public class SlimeAnimation : MonoBehaviour
         {
             if (hit.TryGetComponent(out Player player))
             {
+                if (player.isIframe) return;
                 player.TakeDamage(slimeEnemy.transform.position);
                 player.entityStats.SetEnemy(slimeEnemy);
                 slimeEnemy.entityStats.DoDamage(player);

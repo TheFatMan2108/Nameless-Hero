@@ -9,7 +9,7 @@ public class UI_ItemInventory : MonoBehaviour, IPointerDownHandler
 {
     public InventoryItem item;
     public GameObject icon, amount;
-    private SpriteRenderer sp;
+    protected SpriteRenderer sp;
     protected Player player;
     private void Awake()
     {
@@ -18,7 +18,7 @@ public class UI_ItemInventory : MonoBehaviour, IPointerDownHandler
     private void Start()
     {
         sp = PlayerManager.Instance.transform.GetChild(1).GetComponentInChildren<SpriteRenderer>();
-        player = PlayerManager.Instance.player;
+        player = PlayerManager.Instance.GetComponent<Player>();
     }
     private void Reset()
     {

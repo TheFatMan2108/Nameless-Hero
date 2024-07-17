@@ -60,6 +60,12 @@ public class SlimeEnemy : Enemy
         base.SetVelocity(input);
     }
 
+    public override void TakeDamage(Vector2 direction)
+    {
+        base.TakeDamage(direction);
+        UpdateHealth();
+    }
+
     public override Transform FindPlayer()
     {
         return base.FindPlayer();
@@ -74,6 +80,7 @@ public class SlimeEnemy : Enemy
     public override void Flip(float dir)
     {
         base.Flip(dir);
+        OnFliped(dir);
     }
 
     public override void Dead()

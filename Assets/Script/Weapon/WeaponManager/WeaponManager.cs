@@ -58,8 +58,7 @@ public class WeaponManager : MonoBehaviour
                 if (item == null) return;
                 item.ExecuteItemEffect(enemy.transform);
                 enemy.UpdateHealth();
-                
-
+                GameManager.Instance.AddBattle(enemy);
             }
         }
     }

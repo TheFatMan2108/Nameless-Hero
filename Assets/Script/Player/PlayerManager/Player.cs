@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
-public class Player : Entity
+public class Player : Entity,IDataPersistence
 {
     #region Level
     public LevelSystem levelSystem;
@@ -16,9 +16,6 @@ public class Player : Entity
     #region Animation
     public Animator animator { get; private set; }
     public GhostEffectSystem effectSystem { get; private set; }
-    #endregion
-    #region Collision
-    public Rigidbody2D rb { get; private set; }
     #endregion
     #region States
     public PlayerStateMachine playerStateMachine { get; private set; }
@@ -38,12 +35,14 @@ public class Player : Entity
     #region UI
     public UI_Status status { get; private set; }
     #endregion
+    #region Other
+    public bool isIframe {  get; private set; }
+    #endregion
 
     protected override void Awake()
     {
         base.Awake();
         animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
         status = GetComponentInChildren<UI_Status>();
         weaponParent = GetComponentInChildren<WeaponParent>();
         effectSystem = transform.GetChild(2).GetComponentInChildren<GhostEffectSystem>();
@@ -59,16 +58,8 @@ public class Player : Entity
     protected override void Start()
     {
         base.Start();
-        LoadData();
+       // LoadData();
         playerStateMachine.Initialize(idleState);
-    }
-
-    private void LoadData()
-    {
-        transform.position = DataPersistenceManager.instance.gameData.playerPosition;
-        levelSystem = DataPersistenceManager.instance.gameData.levelSystem;
-        fireTime = DataPersistenceManager.instance.gameData.fireTime;
-        entityStats.SetData(DataPersistenceManager.instance.gameData);
         entityStats.ReloadStats();
         status.SetStatus();
     }
@@ -114,7 +105,6 @@ public class Player : Entity
     {
         return (mousePosition - (Vector2)transform.position);
     }
- 
 
     public void OnGhost()
     {
@@ -146,13 +136,26 @@ public class Player : Entity
     }
     public void SaveData()
     {
+        
+
+    }
+    public void IframePlayer(bool iframe)
+    {
+       isIframe = iframe;
+    }
+
+    public void LoadData(GameData data)
+    {
+        transform.position = data.playerPosition;
+        levelSystem = data.levelSystem;
+        fireTime = data.fireTime;
+        entityStats.SetData(data);
+    }
+
+    public void SaveData(GameData data)
+    {
         DataPersistenceManager.instance.gameData.fireTime = this.fireTime;
         DataPersistenceManager.instance.gameData.SetStatsData(entityStats);
         DataPersistenceManager.instance.gameData.playerPosition = transform.position;
-
-    }
-    public void IframePlayer(bool isOn)
-    {
-        GetComponent<Collider2D>().enabled = !isOn;
     }
 }

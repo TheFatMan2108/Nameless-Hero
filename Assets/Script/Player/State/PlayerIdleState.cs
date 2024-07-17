@@ -11,6 +11,7 @@ public class PlayerIdleState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
+        playerManager.SetVelocity(Vector2.zero);
     }
 
     public override void Exit()

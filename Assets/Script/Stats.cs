@@ -22,5 +22,6 @@ public class Stats
     public void AddValue(float value)=>this.baseValue += value;
     public void AddModifier(float modifier) => modifiers.Add(modifier);
     public void RemoveModifier(float modifier) => modifiers.Remove(modifier);
+    public void RemoveAllModifier() => modifiers.Clear();
 
 }

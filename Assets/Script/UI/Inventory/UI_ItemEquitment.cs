@@ -11,6 +11,7 @@ public class UI_ItemEquitment : UI_ItemInventory
     {
         if (item == null) return;
         Inventory.Instance.UnEquitItem(item.itemData as ItemEquitment);
+        sp.sprite = null;
         Clean();
     }
 

@@ -33,6 +33,16 @@ public class GameData
     }
    public void SetStatsData(EntityStats stats)
     {
+        stats.Vitality.RemoveAllModifier();
+        stats.Mind.RemoveAllModifier();
+        stats.Endurance.RemoveAllModifier();
+        stats.Strength.RemoveAllModifier();
+        stats.Dexterity.RemoveAllModifier();
+        stats.Intelligence.RemoveAllModifier();
+        stats.maxHealth.RemoveAllModifier();
+        stats.maxMana.RemoveAllModifier();
+        stats.maxStamina.RemoveAllModifier();
+
         statsData.Vitality = stats.Vitality;
         statsData.Mind = stats.Mind;
         statsData.Endurance = stats.Endurance;

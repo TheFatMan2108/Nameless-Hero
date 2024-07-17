@@ -33,18 +33,6 @@ public class SlimeMoveState : SlimeGroundState
         dirFace = CalculateAngle(enemy.transform.position, positionMove);
         enemy.Flip(dirFace);
     }
-    float CalculateAngle(Vector2 from, Vector2 to)
-    {
-        float deltaX = to.x - from.x;
-        if (deltaX < 0)
-        {
-            return -1;
-        }
-        else
-        {
-            return 1;
-        }
-    }
     public override void Exit()
     {
         base.Exit();

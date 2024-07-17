@@ -16,15 +16,17 @@ public class PlayerGroundState : PlayerState
     public override void Exit()
     {
         base.Exit();
+        playerManager.SetVelocity(Vector2.zero);
     }
 
     public override void Update()
     {
         base.Update();
+        PlayAnimation(playerManager.GetMouseDirection().normalized);
+        moveDirection = playerManager.moverVector.normalized;
         if (Input.GetKeyDown(KeyCode.LeftShift) && playerManager.cooldownDash < 0)
         {
             stateMachine.ChangeState(playerManager.dashState);
-            return;
         }
     }
 }

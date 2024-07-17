@@ -1,0 +1,4 @@
+1	Villiger	Ta con 1 viec muon nho nguoi nua
+2	Villiger	Hay di giet The Bull cho ta
+3	Villiger	Sau do hay quai lai day ta se tra cong cho nguoi
+4	Player	Cam on ong rat nhieu toi se lam ngay
