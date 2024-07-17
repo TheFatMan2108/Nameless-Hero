@@ -16,7 +16,7 @@ public class SlimeAttackState : SlimeGroundState
     public override void Enter()
     {
         base.Enter();
-        playerPosition = enemy.FindPlayer().position;
+        playerPosition = enemy.FindPlayer().transform.position;
         Flip();
     }
 

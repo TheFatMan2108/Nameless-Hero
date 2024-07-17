@@ -17,12 +17,12 @@ public class QuestManager : MonoBehaviour
     private void Start()
     {
         data = GetComponent<QuestAndConversation>();
-        quest = new QuestObject();
         LoadQuest();
     }
 
     public void LoadQuest()
     {
+        quest = new QuestObject();
         TextAsset loadText = data.GetQuest();
         if (loadText == null) {  quest.isError = true; return; };
         string[] fields = loadText.text.Split("\t");
@@ -37,6 +37,7 @@ public class QuestManager : MonoBehaviour
             quest.goal = new QuestGoal(questGoal[0].ToLower().Equals("kill") ? GoalType.Kill : GoalType.Gathering, Int32.Parse(questGoal[1]));
             quest.complete = false;
             quest.isError = false;
+            quest.isActive = false;
     }
 
     public void ShowQuest()

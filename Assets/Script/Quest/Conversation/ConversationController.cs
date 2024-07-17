@@ -30,6 +30,7 @@ public class ConversationController : MonoBehaviour, IPointerClickHandler
     {
         data = GetComponent<QuestAndConversation>();
         questManager = GetComponent<QuestManager>();
+        playerSprite = PlayerManager.Instance.player.GetComponent<SpriteRenderer>().sprite;
         otherSprite = GetComponent<SpriteRenderer>().sprite;
         LoadTextAsset();
         LoadConversationDefault();
@@ -79,6 +80,7 @@ public class ConversationController : MonoBehaviour, IPointerClickHandler
                 // thanh cong viet o day
                 // sau do reset lai nhiem vu
                 PlayConversation(conversationComplete);
+                isStartMission = false;
             }
         }
     }
@@ -106,17 +108,14 @@ public class ConversationController : MonoBehaviour, IPointerClickHandler
             if (conversationList[current].name == "Player")
             {
                 playerAvatar.sprite = playerSprite;
-                playerAvatar.gameObject.SetActive(true);
-                otherAvatar.gameObject.SetActive(false);
             }
             else
             {
                 otherAvatar.sprite = otherSprite;
-                playerAvatar.gameObject.SetActive(false);
-                otherAvatar.gameObject.SetActive(true);
                 conversationList[current].name = nameNPC;
             }
             
+            otherAvatar.gameObject.SetActive(true);
             nameUI.SetText(conversationList[current].name);
             contentUI.text = conversationList[current].content;
             conversationParent.SetActive(true);
@@ -136,6 +135,8 @@ public class ConversationController : MonoBehaviour, IPointerClickHandler
                 // sau do reset lai nhiem vu
                 PlayerManager.Instance.player.SetFireTime(questManager.quest.goldReaward);
                 PlayerManager.Instance.player.levelSystem.AddExp(questManager.quest.expReaward);
+                GameManager.Instance.listCurrentQuest.Remove(questManager.quest);
+                PlayerManager.Instance.SetQuest("");
                 questManager.data.SetCurrent();
             }
             current = 0;
@@ -144,8 +145,11 @@ public class ConversationController : MonoBehaviour, IPointerClickHandler
 
     public void LoadTextAsset()
     {
+        conversationList.Clear();
         TextAsset loadText = data.GetConversation();
+        #region Not Null
         if (loadText == null) { conversationList.Clear();conversationList.Add(new Conversation(1, "", "...")); return; };
+        #endregion
         string[] lines = loadText.text.Split("\n");
 
         for (int i = 0; i < lines.Length; i++)

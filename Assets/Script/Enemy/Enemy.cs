@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
+    public string name = "What name boss";
     public Action changeHealth, hideBar;
     [SerializeField] protected CinemachineImpulseSource impulseSource;
     [SerializeField] protected float distanceBetween;
@@ -52,13 +53,20 @@ public class Enemy : Entity
     public override void TakeDamage(Vector2 direction)
     {
         base.TakeDamage(direction);
-        UpdateHealth();
-        CameraShakeManager.instance.ScreenShakeFromProfile(profile,impulseSource);
+        OnShakeCamera();
     }
-    public void SetFloatingText(string text)
+
+    public void OnShakeCamera()
     {
-        GameObject fText = Instantiate(floatingText, transform.position, Quaternion.identity);
+        CameraShakeManager.instance.ScreenShakeFromProfile(profile, impulseSource);
+    }
+
+    public TMP_Text SetFloatingText(string text)
+    {
+        Vector3 newPoint = transform.position + new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), UnityEngine.Random.Range(0.5f, 1f));
+        GameObject fText = Instantiate(floatingText,newPoint, Quaternion.identity);
         fText.GetComponent<TMP_Text>().text = text;
+        return fText.GetComponent<TMP_Text>();
     }
     public override void Dead()
     {
@@ -69,7 +77,7 @@ public class Enemy : Entity
     public override void Stun(float timeStun)
     {
         base.Stun(timeStun);
-        SetFloatingText("Parry");
+        SetFloatingText("Parry").fontSize = 10;
     }
 
     public virtual Transform FindPlayer()
@@ -92,6 +100,7 @@ public class Enemy : Entity
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, distanceBetween);
     }
+    public float GetDistanceBetween() => distanceBetween;
     #endregion
 
 

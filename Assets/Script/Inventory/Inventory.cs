@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Windows;
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour,IDataPersistence
 {
     public static Inventory Instance { get; private set; }
     [SerializeField] private Transform inventorySlotParent,inventorySlotEquitment;
     [SerializeField] private List<InventoryItem> inventoryItems,inventoryEquitment;
     [SerializeField] private Dictionary<ItemData, InventoryItem> inventoryDictionary;
     [SerializeField] private Dictionary<ItemEquitment, InventoryItem> inventoryEquitmentDictionary;
+    private SerializableDictionary<string, int> inventoryLoad = new SerializableDictionary<string, int>(),equitmentLoad= new SerializableDictionary<string, int>();
     private UI_ItemInventory[] ui_ItemInventories;
     private UI_ItemEquitment[] ui_ItemEquitments;
-    DataPersistenceManager dataManager;
     private List<ItemData> inventoryLoadedItem;
     private void Awake()
     {
@@ -22,12 +23,10 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
-        dataManager = DataPersistenceManager.instance;
         inventoryItems = new List<InventoryItem>();
         inventoryEquitment = new List<InventoryItem>();
         inventoryDictionary = new Dictionary<ItemData, InventoryItem>();
         inventoryEquitmentDictionary = new Dictionary<ItemEquitment, InventoryItem>();
-
         ui_ItemInventories = inventorySlotParent.GetComponentsInChildren<UI_ItemInventory>();
         ui_ItemEquitments = inventorySlotEquitment.GetComponentsInChildren<UI_ItemEquitment>();
         SetItemForList();
@@ -37,7 +36,7 @@ public class Inventory : MonoBehaviour
     private void SetItemForList()
     {
         LoadItem();
-        foreach (KeyValuePair<string, int> pair in dataManager.gameData.inventoryData.inventory)
+        foreach (KeyValuePair<string, int> pair in inventoryLoad)
         {
             foreach (var item in inventoryLoadedItem)
             {
@@ -50,7 +49,7 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
-        foreach (KeyValuePair<string, int> pair in dataManager.gameData.inventoryData.equitment)
+        foreach (KeyValuePair<string, int> pair in equitmentLoad)
         {
             foreach (var item in inventoryLoadedItem)
             {
@@ -60,7 +59,7 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
-        foreach (KeyValuePair<string, int> pair in dataManager.gameData.inventoryData.equitment)
+        foreach (KeyValuePair<string, int> pair in equitmentLoad)
         {
             foreach (var item in inventoryLoadedItem)
             {
@@ -165,19 +164,6 @@ public class Inventory : MonoBehaviour
         }
         return equitment;
     }
-    public void SaveData()
-    {
-        dataManager.gameData.inventoryData.inventory.Clear();
-        dataManager.gameData.inventoryData.equitment.Clear();
-        foreach (KeyValuePair<ItemData,InventoryItem> item in inventoryDictionary)
-        {
-            dataManager.gameData.inventoryData.inventory.Add(item.Key.ID, item.Value.stack);
-        }
-        foreach (KeyValuePair<ItemEquitment, InventoryItem> item in inventoryEquitmentDictionary)
-        {
-            dataManager.gameData.inventoryData.equitment.Add(item.Key.ID, item.Value.stack);
-        }
-    }
     public List<ItemData> LoadItem()
     {
         inventoryLoadedItem = new List<ItemData>();
@@ -189,5 +175,25 @@ public class Inventory : MonoBehaviour
             inventoryLoadedItem.Add(itemData);
         }
         return inventoryLoadedItem;
+    }
+
+    public void LoadData(GameData data)
+    {
+        inventoryLoad = data.inventoryData.inventory;
+        equitmentLoad = data.inventoryData.equitment;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.inventoryData.inventory.Clear();
+        data.inventoryData.equitment.Clear();
+        foreach (KeyValuePair<ItemData, InventoryItem> item in inventoryDictionary)
+        {
+            data.inventoryData.inventory.Add(item.Key.ID, item.Value.stack);
+        }
+        foreach (KeyValuePair<ItemEquitment, InventoryItem> item in inventoryEquitmentDictionary)
+        {
+            data.inventoryData.equitment.Add(item.Key.ID, item.Value.stack);
+        }
     }
 }

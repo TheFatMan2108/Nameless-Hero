@@ -26,8 +26,10 @@ public class ItemObject : MonoBehaviour
     }
     IEnumerator StopDrop()
     {
-        rb.velocity = new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, -15f));
-        yield return new WaitForSeconds(0.1f);
+        rb.velocity = new Vector2(Random.Range(-1f, 1f), 5);
+        yield return new WaitForSeconds(0.5f);
+        rb.velocity = new Vector2(0, -6);
+        yield return new WaitForSeconds(0.5f);
         rb.velocity = Vector2.zero;
     }
     public void PickUpItem()

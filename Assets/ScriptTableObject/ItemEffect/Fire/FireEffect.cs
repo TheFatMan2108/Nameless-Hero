@@ -17,7 +17,7 @@ public class FireEffect : ItemEffect
             //cong thuc hay vl 
             Vector3 spawnPosition = positonEnemy.position + (Vector3)(dir * i);
             GameObject newObj = Instantiate(objectPrefab, spawnPosition, Quaternion.identity);
-            Destroy(newObj, 10f);
+            Destroy(newObj, 1f);
         }
     }
 }

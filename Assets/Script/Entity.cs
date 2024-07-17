@@ -56,7 +56,7 @@ public class Entity : MonoBehaviour
     public virtual void Flip(float dir)
     {
         transform.localScale = new Vector3 (dir, 1, 1);
-        OnFliped(dir);
+        
     }
     protected virtual void Reset()
     {
@@ -72,7 +72,7 @@ public class Entity : MonoBehaviour
     }
     public virtual void SetVelocity(Vector2 input)
     {
-        rb.velocity = input.normalized;
+        rb.velocity = input;
     }
     public virtual void SetAttackBusy(bool busy)
     {
@@ -122,10 +122,10 @@ public class Entity : MonoBehaviour
         animator.speed = GetMoveSpeed() / moveSpeed;
     }
     public float GetMoveSpeed() => moveSpeed-((slowMove/100)*moveSpeed);
-    private IEnumerator SlowTime()
+    protected IEnumerator SlowTime()
     {
         Time.timeScale =timeSlow;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.05f);
         Time.timeScale = 1f;
     }
 }

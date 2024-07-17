@@ -35,5 +35,16 @@ public class EnemyState
     {
         triggerCalled = true;
     }
-
+    public float CalculateAngle(Vector2 from, Vector2 to)
+    {
+        float deltaX = to.x - from.x;
+        if (deltaX < 0)
+        {
+            return -1;
+        }
+        else
+        {
+            return 1;
+        }
+    }
 }

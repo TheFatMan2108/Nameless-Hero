@@ -1,0 +1,1 @@
+1	TRUE	Kill The Bull	Kill boss The Bull	100	5000	Kill,1

@@ -51,8 +51,8 @@ public class EnemyStats : EntityStats
         base.TakeDamage(damage);
         if(isMe.isDead)return;
         enemy.SetFloatingText(damage.ToString());
-        Debug.Log(enemy.transform.position);
-        if(curentHeatlth<=0)Dead();
+        (isMe as Enemy).UpdateHealth();
+        if (curentHeatlth<=0)Dead();
     }
 
     protected override void Dead()
@@ -65,30 +65,25 @@ public class EnemyStats : EntityStats
     protected override void ExecuteToxicDamage()
     {
         base.ExecuteToxicDamage();
-        (isMe as Enemy).UpdateHealth();
     }
 
     protected override void ExecuteBloodDamage()
     {
         base.ExecuteBloodDamage();
-        (isMe as Enemy).UpdateHealth();
     }
 
     protected override void ExecuteLightDamage()
     {
         base.ExecuteLightDamage();
-        (isMe as Enemy).UpdateHealth();
     }
 
     protected override void ExecuteIceDamage()
     {
         base.ExecuteIceDamage();
-        (isMe as Enemy).UpdateHealth();
     }
 
     protected override void ExecuteFireDamage()
     {
         base.ExecuteFireDamage();
-        (isMe as Enemy).UpdateHealth();
     }
 }
