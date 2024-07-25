@@ -28,6 +28,7 @@ public class Player : Entity,IDataPersistence
     public float cooldownDash;
     public bool isAttackBusy { get; private set; }
     public float fireTime { get; private set; }
+    public bool isCutScene;
     #endregion
     #region Weapons
     private WeaponParent weaponParent;
@@ -58,7 +59,6 @@ public class Player : Entity,IDataPersistence
     protected override void Start()
     {
         base.Start();
-       // LoadData();
         playerStateMachine.Initialize(idleState);
         entityStats.ReloadStats();
         status.SetStatus();
@@ -66,6 +66,7 @@ public class Player : Entity,IDataPersistence
 
     protected override void Update()
     {
+        if(isCutScene) return;
         base.Update();
         playerStateMachine.State.Update();
         weaponParent.pointerposition = mousePosition;
@@ -157,5 +158,9 @@ public class Player : Entity,IDataPersistence
         DataPersistenceManager.instance.gameData.fireTime = this.fireTime;
         DataPersistenceManager.instance.gameData.SetStatsData(entityStats);
         DataPersistenceManager.instance.gameData.playerPosition = transform.position;
+    }
+    public void SetIsCutScene(bool isCutScene)
+    {
+        this.isCutScene = isCutScene;
     }
 }

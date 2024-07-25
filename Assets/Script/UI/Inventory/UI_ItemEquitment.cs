@@ -11,9 +11,8 @@ public class UI_ItemEquitment : UI_ItemInventory
     {
         if (item == null) return;
         Inventory.Instance.UnEquitItem(item.itemData as ItemEquitment);
+        WeaponManager.instance.SetWeapon(null);
         sp.sprite = null;
         Clean();
     }
-
-
 }

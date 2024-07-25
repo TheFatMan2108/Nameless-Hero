@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,6 +11,7 @@ public class UI_ItemInventory : MonoBehaviour, IPointerDownHandler
     public InventoryItem item;
     public GameObject icon, amount;
     protected SpriteRenderer sp;
+    private Animator animatorWeapon;
     protected Player player;
     private void Awake()
     {
@@ -65,12 +67,19 @@ public class UI_ItemInventory : MonoBehaviour, IPointerDownHandler
         if (item.itemData.type == ItemType.Equitment)
         {
             if ((item.itemData as ItemEquitment).equitmentType == EquitmentType.Weapon)
+            {
                 sp.sprite = item.itemData.icon;
+                WeaponManager.instance.SetWeapon(item.itemData as ItemEquitment);
+            }
             Inventory.Instance.EquitmentInventory(item.itemData);
+           
             player.status.SetStatus();
         }
         
 
 
     }
+
+  
+
 }

@@ -8,10 +8,17 @@ public enum EquitmentType
     Armor,
     Flask
 }
+public enum WeaponType
+{
+    Sword,
+    Staff
+}
 [CreateAssetMenu(fileName = "Equitment item ", menuName = "Data/Equitment")]
 public class ItemEquitment : ItemData
 {
     public EquitmentType equitmentType;
+    public WeaponType weaponType;
+    public int[] attackMovement;
     public ItemEffect[] listItemEffect;
     [Header("Stats")]
     public float Vitality;
@@ -86,5 +93,12 @@ public class ItemEquitment : ItemData
         myStats.bloodDamage.RemoveModifier(bloodDamage);
         myStats.toxicDamage.RemoveModifier(toxicDamage);
         myStats.ReloadStats();
+    }
+
+    public int GetTypeWeapon(WeaponType type)
+    {
+        if (WeaponType.Sword == type) return 0;
+        else if (WeaponType.Staff == type) return 1;
+        else return 0;
     }
 }
