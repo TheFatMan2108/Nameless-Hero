@@ -29,10 +29,15 @@ public class PlayerDashState : PlayerState
         playerManager.IframePlayer(false);
     }
 
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
+       
+    }
+
     public override void Update()
     {
         base.Update();
-        Debug.Log("Dash");
         if (dashArea < 0)
         {
             playerManager.OffGhost();

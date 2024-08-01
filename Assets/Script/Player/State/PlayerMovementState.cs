@@ -18,10 +18,16 @@ public class PlayerMovementState : PlayerGroundState
         base.Exit();
     }
 
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
+        if (!playerManager.isKnockBack) playerManager.SetVelocity(moveDirection * playerManager.GetMoveSpeed());
+    }
+
     public override void Update()
     {
         base.Update();
-        if(!playerManager.isKnockBack) playerManager.SetVelocity(moveDirection* playerManager.GetMoveSpeed());
+        
 
         if (moveDirection.sqrMagnitude == 0) stateMachine.ChangeState(playerManager.idleState);
     }

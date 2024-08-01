@@ -13,10 +13,13 @@ public class PlayerManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else Destroy(gameObject);
     }
+    private void Start()
+    {
+        DontDestroyManager.instance.Add(gameObject);
+    }
     // Update is called once per frame
-   public void SetQuest(string content)=>questText.text = content;
+    public void SetQuest(string content)=>questText.text = content;
 }

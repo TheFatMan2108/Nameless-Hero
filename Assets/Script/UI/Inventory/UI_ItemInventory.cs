@@ -69,7 +69,6 @@ public class UI_ItemInventory : MonoBehaviour, IPointerDownHandler
             if ((item.itemData as ItemEquitment).equitmentType == EquitmentType.Weapon)
             {
                 sp.sprite = item.itemData.icon;
-                WeaponManager.instance.SetWeapon(item.itemData as ItemEquitment);
             }
             Inventory.Instance.EquitmentInventory(item.itemData);
            

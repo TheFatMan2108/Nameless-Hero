@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class PlayerState 
 {
@@ -22,6 +23,10 @@ public class PlayerState
         #region On
         playerManager.animator.SetBool(animBoolName,true);
         #endregion
+    }
+    public virtual void FixedUpdate() 
+    {
+    
     }
     public virtual void Update()
     {

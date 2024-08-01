@@ -30,6 +30,8 @@ public class LevelSystem
             pointStats++;
             level++;
             expNextLevel = (float)(500f * Math.Pow(level, 2) - (500 * level));
+            PlayerManager.Instance.player.SetFloatingText("Level Up").fontSize=15f;
+            PlayerManager.Instance.player.levelUp();
         }
         DataPersistenceManager.instance.gameData.levelSystem = this;
     }

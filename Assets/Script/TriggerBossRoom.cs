@@ -6,6 +6,7 @@ public class TriggerBossRoom : MonoBehaviour
 {
     [SerializeField] GameObject cutscene,parrent;
     [SerializeField] string nameBoss;
+    private bool active;
     private void Update()
     {
         if (GameManager.Instance.GetBossEvent(nameBoss) != null)
@@ -23,8 +24,10 @@ public class TriggerBossRoom : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out Player player))
         {
+            if(active) return;
             StartCoroutine(SetCutScene(player));
             cutscene.SetActive(true);
+            active = true;
         }
     }
     IEnumerator SetCutScene(Player player)

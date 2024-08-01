@@ -22,13 +22,5 @@ public class WeaponParent : MonoBehaviour
             scale.y = 1;
         }
         transform.localScale = scale;
-        if (transform.eulerAngles.z > 0 && transform.eulerAngles.z < 180)
-        {
-            spriteWeapon.sortingOrder = spriteChar.sortingOrder - 1;
-        }
-        else
-        {
-            spriteWeapon.sortingOrder = spriteChar.sortingOrder + 1;
-        }
     }
 }

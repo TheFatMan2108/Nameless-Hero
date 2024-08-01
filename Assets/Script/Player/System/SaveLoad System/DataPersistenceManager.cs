@@ -38,8 +38,6 @@ public class DataPersistenceManager : MonoBehaviour
             return;
         }
         instance = this;
-        DontDestroyOnLoad(this.gameObject);
-
         if (disableDataPersistence)
         {
             Debug.LogWarning("Data Persistence is currently disabled!");
@@ -48,6 +46,10 @@ public class DataPersistenceManager : MonoBehaviour
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
 
         InitializeSelectedProfileId();
+    }
+    private void Start()
+    {
+        DontDestroyManager.instance.Add(gameObject);
     }
 
     private void OnEnable()
