@@ -61,10 +61,10 @@ public class WeaponManager : MonoBehaviour
             if (hit.gameObject.TryGetComponent(out Enemy enemy))
             {
                 ItemEquitment item = Inventory.Instance.GetEquitment(EquitmentType.Weapon);
-                if(item.weaponType == WeaponType.Sword)
+                if(item!=null&&item.weaponType == WeaponType.Sword)
                 {
                     SwordToDamage(enemy, item);
-                }else if(item.weaponType == WeaponType.Staff)
+                }else if(item != null&&item.weaponType == WeaponType.Staff)
                 {
                     // viet skill o day
 

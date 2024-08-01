@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,6 +39,7 @@ public class Player : Entity,IDataPersistence
     #endregion
     #region Other
     public bool isIframe {  get; private set; }
+    public Action levelUp;
     #endregion
 
     protected override void Awake()
@@ -63,7 +65,10 @@ public class Player : Entity,IDataPersistence
         entityStats.ReloadStats();
         status.SetStatus();
     }
-
+    protected void FixedUpdate()
+    {
+        playerStateMachine.State.FixedUpdate();
+    }
     protected override void Update()
     {
         if(isCutScene) return;

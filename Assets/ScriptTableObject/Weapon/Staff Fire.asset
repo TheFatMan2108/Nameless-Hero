@@ -19,7 +19,7 @@ MonoBehaviour:
   dropRate: 100
   equitmentType: 0
   weaponType: 1
-  attackMovement: 010000000100000001000000
+  attackMovement: ffffffffffffffffffffffff
   listItemEffect: []
   Vitality: 0
   Mind: 10

@@ -206,13 +206,22 @@
             "id": "59357b40-bf39-4227-bb7e-dd38eb4ad279",
             "actions": [
                 {
-                    "name": "Menu",
+                    "name": "Inventory",
                     "type": "Value",
                     "id": "74329959-ce43-4aef-98a6-03ed714a5af3",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Open Menu",
+                    "type": "Button",
+                    "id": "f743989d-da53-44ee-aa65-1b4d45b747b0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -223,7 +232,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Menu",
+                    "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "879a108b-0bd6-46cd-bf3f-3264b42a4ddf",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Open Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

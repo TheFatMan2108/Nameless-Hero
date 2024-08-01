@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Windows;
+using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour,IDataPersistence
 {
@@ -68,6 +69,8 @@ public class Inventory : MonoBehaviour,IDataPersistence
                     EquitmentInventory(item);
                     if ((item as ItemEquitment).equitmentType == EquitmentType.Weapon)
                         PlayerManager.Instance.transform.GetChild(1).GetComponentInChildren<SpriteRenderer>().sprite = item.icon;
+                   
+                    
                 }
             }
         }
@@ -112,6 +115,10 @@ public class Inventory : MonoBehaviour,IDataPersistence
             if(item.Key.equitmentType == itemEquitment.equitmentType) 
                 oldItem = item.Key;
         }
+        if(itemEquitment.equitmentType == EquitmentType.Weapon)
+        {
+            WeaponManager.instance.SetWeapon(itemEquitment);
+        }
         UnEquitItem(oldItem);
         inventoryEquitment.Add(inventoryItem);
         inventoryEquitmentDictionary.Add(itemEquitment, inventoryItem);
@@ -122,7 +129,6 @@ public class Inventory : MonoBehaviour,IDataPersistence
     {
         if (inventoryDictionary.TryGetValue(item, out InventoryItem value))
         {
-            Debug.Log(value);
             value.AddStack();
         }
         else

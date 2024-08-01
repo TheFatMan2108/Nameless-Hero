@@ -102,7 +102,6 @@ public class ConversationController : MonoBehaviour, IPointerClickHandler
     }
     public void PlayConversation(List<Conversation> conversationList)
     {
-        Debug.Log("Current " + conversationList.Count);
         if (current < conversationList.Count)
         {
             if (conversationList[current].name == "Player")

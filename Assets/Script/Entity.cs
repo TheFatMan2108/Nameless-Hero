@@ -2,6 +2,7 @@ using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
@@ -15,6 +16,7 @@ public class Entity : MonoBehaviour
     [SerializeField] protected float waitEvent;
     [SerializeField] protected float knockBackDirection;
     [SerializeField] protected float knockBackTimer;
+    [SerializeField] protected GameObject floatingText;
     [Range(0f, 0.5f)]
     [SerializeField] protected float timeSlow = 0.2f;
     #endregion
@@ -82,7 +84,13 @@ public class Entity : MonoBehaviour
     {
         Gizmos.DrawWireSphere(attackCheck.position, attackDistance);
     }
-
+    public TMP_Text SetFloatingText(string text)
+    {
+        Vector3 newPoint = transform.position + new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), UnityEngine.Random.Range(0.5f, 1f));
+        GameObject fText = Instantiate(floatingText, newPoint, Quaternion.identity);
+        fText.GetComponent<TMP_Text>().text = text;
+        return fText.GetComponent<TMP_Text>();
+    }
     public virtual void TakeDamage(Vector2 direction)
     {
         StartCoroutine(KnockBack(direction));

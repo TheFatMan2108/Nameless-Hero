@@ -12,7 +12,6 @@ public class Enemy : Entity
     [SerializeField] protected CinemachineImpulseSource impulseSource;
     [SerializeField] protected float distanceBetween;
     [SerializeField] protected ScreenShakeProfile profile;
-    [SerializeField] protected GameObject floatingText;
     protected override void Awake()
     {
         base.Awake();
@@ -59,14 +58,6 @@ public class Enemy : Entity
     public void OnShakeCamera()
     {
         CameraShakeManager.instance.ScreenShakeFromProfile(profile, impulseSource);
-    }
-
-    public TMP_Text SetFloatingText(string text)
-    {
-        Vector3 newPoint = transform.position + new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), UnityEngine.Random.Range(0.5f, 1f));
-        GameObject fText = Instantiate(floatingText,newPoint, Quaternion.identity);
-        fText.GetComponent<TMP_Text>().text = text;
-        return fText.GetComponent<TMP_Text>();
     }
     public override void Dead()
     {

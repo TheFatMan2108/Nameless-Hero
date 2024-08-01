@@ -4,31 +4,43 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ControllerUI : MonoBehaviour
 {
-    private GameObject menu;
+    private GameObject inventory,menu;
     private Player player;
     private List<TextMeshProUGUI> statsText = new List<TextMeshProUGUI>(); 
     private List<Button> buttonStart = new List<Button>(); 
     private void Awake()
     {
-        menu = transform.GetChild(0).gameObject;
+        inventory = transform.GetChild(0).gameObject;
+        menu = transform.GetChild(2).gameObject;
     }
     private void Start()
     {
         player = PlayerManager.Instance.player;
         StatsDataFun();
+        AddMenu();
+        ControllerInventory();
         ControllerMenu();
+        player.levelUp += LoadStats;
+    }
+
+    private void AddMenu()
+    {
+        menu.transform.GetChild(0).GetChild(0).GetComponent<Button>().onClick.AddListener(ControllerMenu);
+        menu.transform.GetChild(0).GetChild(1).GetComponent<Button>();// them ham setting
+        menu.transform.GetChild(0).GetChild(2).GetComponent<Button>().onClick.AddListener(BackToMenu);
     }
 
     private void StatsDataFun()
     {
-       menu.transform.GetChild(3).GetChild(1).GetComponent<TMP_Text>().text = player.levelSystem.pointStats.ToString();
-       for(int i = 0; i < menu.transform.GetChild(4).childCount; i++)
+       inventory.transform.GetChild(3).GetChild(1).GetComponent<TMP_Text>().text = player.levelSystem.pointStats.ToString();
+       for(int i = 0; i < inventory.transform.GetChild(4).childCount; i++)
         {
-           GameObject stats = menu.transform.GetChild(4).GetChild(i).gameObject;
+           GameObject stats = inventory.transform.GetChild(4).GetChild(i).gameObject;
            statsText.Add(stats.transform.GetChild(1).GetComponent<TextMeshProUGUI>());
             buttonStart.Add(stats.transform.GetChild(2).GetComponent<Button>());
         }
@@ -38,12 +50,12 @@ public class ControllerUI : MonoBehaviour
         buttonStart[3].onClick.AddListener(() => AddStats(ref player.entityStats.Strength));
         buttonStart[4].onClick.AddListener(() => AddStats(ref player.entityStats.Dexterity));
         buttonStart[5].onClick.AddListener(() => AddStats(ref player.entityStats.Intelligence));
-        LoadData();
+        LoadStats();
     }
 
-    private void LoadData()
+    public void LoadStats()
     {
-        menu.transform.GetChild(3).GetChild(1).GetComponent<TMP_Text>().text = player.levelSystem.pointStats.ToString();
+        inventory.transform.GetChild(3).GetChild(1).GetComponent<TMP_Text>().text = player.levelSystem.pointStats.ToString();
         statsText[0].text = player.entityStats.Vitality.GetBaseValue().ToString();
         statsText[1].text = player.entityStats.Mind.GetBaseValue().ToString();
         statsText[2].text = player.entityStats.Endurance.GetBaseValue().ToString();
@@ -70,18 +82,45 @@ public class ControllerUI : MonoBehaviour
     {
         player.levelSystem.pointStats--;
         stats.AddValue(1);
-        LoadData();
+        LoadStats();
     }
+    public void Inventory(InputAction.CallbackContext callback)
+    {
+        ControllerInventory();
+    }
+
     public void Menu(InputAction.CallbackContext callback)
     {
         ControllerMenu();
     }
 
-    public void ControllerMenu()
+    private void ControllerMenu()
     {
         if (menu.activeInHierarchy)
+        {
             menu.SetActive(false);
+            Time.timeScale = 1f;
+        }
         else
+        {
             menu.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        inventory.SetActive(false);
+    }
+
+    public void ControllerInventory()
+    {
+        if(menu.activeInHierarchy)return;
+        if (inventory.activeInHierarchy)
+            inventory.SetActive(false);
+       
+        else
+            inventory.SetActive(true);
+    }
+    private void BackToMenu()
+    {
+        DontDestroyManager.instance.ClearAll();
+        SceneManager.LoadScene("MainMenu");
     }
 }

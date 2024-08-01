@@ -55,7 +55,6 @@ public class QuestManager : MonoBehaviour
         quest.isActive = true;
         GameManager.Instance.AddQuest(quest);
         questBoard.SetActive(false);
-        Debug.Log("Đã nhận nhiệm vụ tân thủ");
     }
 
     public void cancelButton()
